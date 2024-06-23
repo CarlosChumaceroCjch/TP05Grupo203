@@ -48,7 +48,7 @@ public class CarreraController {
 		//Guardado de carrera
 		//ListadoCarreras.agCarrera(c);
 		carreraService.guardarCarrera(c);
-		
+	
 		//mostrar la vista
 		ModelAndView modelView= new ModelAndView("listaDeCarreras");
 		//modelView.addObject("listadoCarreras",ListadoCarreras.listarCarreras());
