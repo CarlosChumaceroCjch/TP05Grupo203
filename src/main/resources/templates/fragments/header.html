@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+</head>
+	<body>
+	<div data-th-fragment="navbar">
+		<nav class="navbar bg-body-tertiary">
+			  <div class="container-fluid">
+			    	<a class="navbar-brand" href="#">
+						<img src="/images/Logo-unju.png" alt="Logo" width="150" height="35" class="d-inline-block align-text-top">
+						Facultad de Ingenieria Unju
+					</a>
+					<p>Lema</p>
+			  </div>
+		</nav>
+		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="http://localhost:8080/">Inicio</a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item"><a class="nav-link active"
+							aria-current="page" href="#">Acerca De</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Noticias</a></li>
+						
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false"> Formularios </a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="/formularioCarrera">Formulario de Carrera</a></li>
+								<li><a class="dropdown-item" href="/listaDeCarreras">Lista de Carrera</a></li>
+								<li><hr class="dropdown-divider"></li>
+								
+								<li><a class="dropdown-item" href="/formularioAlumno">Formulario de Alumnos</a></li>
+								<li><a class="dropdown-item" href="listaDeAlumnos">Lista de Alumnos</a></li>
+								<li><hr class="dropdown-divider"></li>
+								
+								<li><a class="dropdown-item" href="/formularioDocente">Formulario de Docentes</a></li>
+								<li><a class="dropdown-item" href="/listaDeDocentes">Lista de Docentes</a></li>
+								<li><hr class="dropdown-divider"></li>
+								
+								<li><a class="dropdown-item" href="/formularioMateria">Formulario de Materias</a></li>
+								<li><a class="dropdown-item" href="/listaDeMaterias">Lista de Materias</a></li>
+								<li><hr class="dropdown-divider"></li>
+							</ul>
+						</li>
+						<li class="nav-item"><a class="nav-link disabled"
+							aria-disabled="true">Contacto</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+		
+
+	<script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+	</body>
+</html>
