@@ -17,14 +17,40 @@ public class CarreraServiceImp implements CarreraService{
 	@Override
 	public void guardarCarrera(Carrera c) {
 		// TODO Auto-generated method stub
-		c.setStatus(true);
+		//c.setStatus(true);
 		carreraRepository.save(c);
 	}
 
 	@Override
-	public List<Carrera> MostrarCarreras(Carrera c) {
+	public List<Carrera> MostrarCarreras() {
 		// TODO Auto-generated method stub
-		return carreraRepository.findAll();
+		return carreraRepository.findCarreraByStatus(true);
+	}
+
+	@Override
+	public void eliminarCarrera(String codigo) {
+		// TODO Auto-generated method stub
+		List<Carrera>listadoCarreras = carreraRepository.findAll();
+		for (int i = 0; i < listadoCarreras.size(); i++) {
+			Carrera carrera = listadoCarreras.get(i);
+			if (carrera.getCodigo().equals(codigo)) {
+				carrera.setStatus(false);
+				carreraRepository.save(carrera);
+				break;
+			}
+		}
+	}	
+
+	@Override
+	public void modifcarCarrera(Carrera c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Carrera buscarCarrera(String codigo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

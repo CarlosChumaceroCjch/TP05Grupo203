@@ -52,27 +52,27 @@ public class CarreraController {
 		//mostrar la vista
 		ModelAndView modelView= new ModelAndView("listaDeCarreras");
 		//modelView.addObject("listadoCarreras",ListadoCarreras.listarCarreras());
-		modelView.addObject("listadoCarreras",carreraService.MostrarCarreras(c));
+		modelView.addObject("listadoCarreras",carreraService.MostrarCarreras());
 		
 		return modelView;
 		
 	}
-	/**
+	
 	@GetMapping("/eliminarCarrera/{codigo}")
 	public ModelAndView eliminarCarreraDeLista(@PathVariable(name="codigo") String codigo) {
 		//Borrar
-		ListadoCarreras.eliminarCarrera(codigo);
-		
+		//ListadoCarreras.eliminarCarrera(codigo);
+		carreraService.eliminarCarrera(codigo);
 		//Mostrar Nuevo Listadp
 		ModelAndView modelView = new ModelAndView("listaDeCarreras");
-		modelView.addObject("listadoCarreras",ListadoCarreras.listarCarreras());
+		modelView.addObject("listadoCarreras",carreraService.MostrarCarreras());
 		
 		return modelView;
 	}
 	
 	@GetMapping("/modificarCarrera/{codigo}")
 	public ModelAndView modificarCarrera(@PathVariable(name="codigo")String codigo) {
-		Carrera carrera = ListadoCarreras.buscaCarreraCod(codigo);
+		Carrera carrera = carreraService.buscarCarrera(codigo);
 		ModelAndView modelView =new ModelAndView("formCarrera");
 		modelView.addObject("nuevaCarrera",carrera);
 		modelView.addObject("flag", true);		
@@ -81,13 +81,13 @@ public class CarreraController {
 	
 	@PostMapping("/modificarCarrera")
 	public ModelAndView modifcarCarrera(@ModelAttribute("nuevaCarrera") Carrera cMod)
-	{	ListadoCarreras.modificarCarrera(cMod);
+	{	carreraService.modifcarCarrera(cMod);
 		ModelAndView modelView = new ModelAndView("listaDeCarreras");
-		modelView.addObject("listadoCarreras",ListadoCarreras.listarCarreras());
+		modelView.addObject("listadoCarreras",carreraService.MostrarCarreras());
 		return modelView;
 		
 	}
 	
-	 */
+	 
 	
 }
