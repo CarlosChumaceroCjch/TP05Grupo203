@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.edu.unju.fi.DTO.CarreraDTO;
+import ar.edu.unju.fi.map.CarreraMapDTO;
 import ar.edu.unju.fi.model.Carrera;
 import ar.edu.unju.fi.repository.CarreraRepository;
 
@@ -14,11 +16,15 @@ public class CarreraServiceImp implements CarreraService{
 	
 	@Autowired
 	CarreraRepository carreraRepository;
+	
+	@Autowired
+	CarreraMapDTO carreraMapDTO;
 	@Override
-	public void guardarCarrera(Carrera c) {
+	public void guardarCarrera(CarreraDTO c) {
 		// TODO Auto-generated method stub
 		//c.setStatus(true);
-		carreraRepository.save(c);
+		
+		carreraRepository.save(carreraMapDTO.convertirDTOaCarrera(c));
 	}
 
 	@Override
@@ -42,12 +48,12 @@ public class CarreraServiceImp implements CarreraService{
 	}	
 
 	@Override
-	public void modifcarCarrera(Carrera c) {
+	public void modifcarCarrera(CarreraDTO c) {
 		List<Carrera>listadoCarreras = carreraRepository.findAll();
 		for (int i = 0; i < listadoCarreras.size(); i++) {
 			Carrera carrera = listadoCarreras.get(i);
 			if (carrera.getCodigo().equals(c.getCodigo())) {
-				carreraRepository.save(c);
+				carreraRepository.save(carreraMapDTO.convertirDTOaCarrera(c));
 				break;
 			}
 		}

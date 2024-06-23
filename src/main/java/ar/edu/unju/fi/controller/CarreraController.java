@@ -8,17 +8,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unju.fi.DTO.CarreraDTO;
 import ar.edu.unju.fi.model.Carrera;
 import ar.edu.unju.fi.services.CarreraService;
 
-
-
-
 @Controller
 public class CarreraController {
+
 	
 	@Autowired
-	Carrera nuevaCarrera = new Carrera();
+	CarreraDTO nuevaCarreraDTO;
 	
 	@Autowired
 	CarreraService carreraService;
@@ -28,30 +27,28 @@ public class CarreraController {
 		//Vista formCarrera.html
 		ModelAndView modelView= new ModelAndView("formCarrera");
 		//Agrega el Objeto
-		modelView.addObject("nuevaCarrera",nuevaCarrera);
+		modelView.addObject("nuevaCarrera",nuevaCarreraDTO);
 		modelView.addObject("flag", false);
 		return modelView;
 		
 	}
-	/**
+	
 	@GetMapping("/listaDeCarreras")
 	public ModelAndView Lista() {
 		ModelAndView modelView= new ModelAndView("listaDeCarreras");
-		modelView.addObject("listadoCarreras",ListadoCarreras.listarCarreras());
+		modelView.addObject("listadoCarreras",carreraService.MostrarCarreras());
 		return modelView;
 	}
 	
-	**/
+	
 	@PostMapping("/guardarCarrera")
-	public ModelAndView saveCarrera(@ModelAttribute("nuevaCarrera") Carrera c) {
+	public ModelAndView saveCarrera(@ModelAttribute("nuevaCarrera") CarreraDTO c) {
 
 		//Guardado de carrera
-		//ListadoCarreras.agCarrera(c);
 		carreraService.guardarCarrera(c);
 	
 		//mostrar la vista
 		ModelAndView modelView= new ModelAndView("listaDeCarreras");
-		//modelView.addObject("listadoCarreras",ListadoCarreras.listarCarreras());
 		modelView.addObject("listadoCarreras",carreraService.MostrarCarreras());
 		
 		return modelView;
@@ -60,10 +57,8 @@ public class CarreraController {
 	
 	@GetMapping("/eliminarCarrera/{codigo}")
 	public ModelAndView eliminarCarreraDeLista(@PathVariable(name="codigo") String codigo) {
-		//Borrar
-		//ListadoCarreras.eliminarCarrera(codigo);
+
 		carreraService.eliminarCarrera(codigo);
-		//Mostrar Nuevo Listadp
 		ModelAndView modelView = new ModelAndView("listaDeCarreras");
 		modelView.addObject("listadoCarreras",carreraService.MostrarCarreras());
 		
@@ -80,7 +75,7 @@ public class CarreraController {
 	}
 	
 	@PostMapping("/modificarCarrera")
-	public ModelAndView modifcarCarrera(@ModelAttribute("nuevaCarrera") Carrera cMod)
+	public ModelAndView modifcarCarrera(@ModelAttribute("nuevaCarrera") CarreraDTO cMod)
 	{	carreraService.modifcarCarrera(cMod);
 		ModelAndView modelView = new ModelAndView("listaDeCarreras");
 		modelView.addObject("listadoCarreras",carreraService.MostrarCarreras());
