@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link data-th-href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+	<title>Formulario</title>
+</head>
+<body>
+
+	<header data-th-replace="~{/fragments/header :: navbar}"></header>
+	
+	<main class="container">
+		<h1> FORMULARIO ALUMNO</h1>
+		<form data-th-object="${nuevoAlumno}" data-th-action="@{/modificarAlumno}:@{/guardarAlumno}"  method="post">
+  			<div class="mb-3 col-sm-6">
+    			<label for="dni" class="form-label">DNI</label>
+    			<input type="number" class="form-control" id="dni" data-th-field="*{nuevoAlumno.dni}">
+  			</div>
+  			<div class="mb-3 col-sm-6">
+    			<label for="nombre" class="form-label">Nombre</label>
+    			<input type="text" class="form-control" id="nombre" data-th-field="*{nombre}">
+  			</div>
+  			<div class="mb-3 col-sm-6">
+    			<label for="apellido" class="form-label">Apellido</label>
+    			<input type="text" class="form-control" id="apellido" data-th-field="*{apellido}">
+  			</div>
+  			<div class="mb-3 col-sm-6">
+    			<label for="email" class="form-label">Email</label>
+    			<input type="email" class="form-control" id="email" data-th-field="*{email}">
+  			</div>
+  			<div class="mb-3 col-sm-6">
+    			<label for="telefono" class="form-label">Telefono</label>
+    			<input type="number" class="form-control" id="telefono" data-th-field="*{telefono}">
+  			</div>
+  			<div class="mb-3 col-sm-6">
+    			<label for="nacimiento" class="form-label">Fecha de nacimiento</label>
+    			<input type="date" class="form-control" id="nacimiento" data-th-field="*{nacimiento}">
+  			</div>
+  			<div class="mb-3 col-sm-6">
+    			<label for="domicilio" class="form-label">Domicilio</label>
+    			<input type="text" class="form-control" id="domicilio" data-th-field="*{domicilio}">
+  			</div>
+  			<div class="mb-3 col-sm-6">
+    			<label for="lu" class="form-label">Libreta Universitaria (LU)</label>
+    			<input type="number" class="form-control" id="lu" data-th-field="*{lu}">
+  			</div>
+  			<button type="submit" class="btn btn-primary">Guardar</button>
+		</form>
+	</main>
+	
+	<footer data-th-replace="~{/fragments/footer :: footer}"></footer>
+	
+	<script type="text/javascript" data-th-src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
