@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+<title>Insert title here</title>
+</head>
+
+<body>
+	<!-- Header -->
+	<div data-th-replace="~{fragments/header :: navbar}"></div>
+	<div class="container">
+		<h1>Formulario Carrera</h1>
+		<form data-th-object="${nuevaCarrera}"
+			data-th-Action="${flag}?@{/modificarCarrera}:@{/guardarCarrera}" method="post">
+			<div class="col-md-4">
+				<label for="codigo" class="form-label">Codigo</label> <input
+					type="text" class="form-control" id="codigo"
+					data-th-field="*{codigo}" data-th-readonly=${flag}>
+			</div>
+
+			<div class="col-md-4">
+				<label for="nombre" class="form-label">Nombre Carrera</label> <input
+					type="text" class="form-control" id="nombre"
+					data-th-field="*{nombre}">
+			</div>
+
+			<div class="col-md-4">
+				<label for="cantidad" class="form-label">Cantidad de años</label> <input
+					type="number" class="form-control" id="cantidad"
+					data-th-field="*{cantAnios}">
+			</div>
+
+			<div class="col-md-4">
+				<label class="form-label" for="status">Estado</label> <select
+					data-th-field="*{status}" class="form-control" required>
+					<option data-th-value="true">True</option>
+					<option data-th-value="false">False</option>
+
+				</select>
+			</div>
+
+			<button type="submit" class="btn btn-primary">Guardar
+				Carrera</button>
+		</form>
+	</div>
+	<footer data-th-replace="~{fragments/footer :: footer}">
+		</footer> 
+	<script
+		data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
