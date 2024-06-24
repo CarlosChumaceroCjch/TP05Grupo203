@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet"
+	data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+<title>Formulario Materias</title>
+</head>
+<body>
+    <!-- Header -->
+	<div data-th-replace="~{fragments/header :: navbar}"></div>
+	<div class="container">
+		<h1>FORMULARIO MATERIAS</h1>
+		<form th:action="@{/materias/editar}" th:object="${nuevaMateria}" method="post">
+		            <div class="form-group">
+		                <label for="codigo">Código:</label>
+		                <input type="text" class="form-control" id="codigo" th:field="*{codigo}" required>
+		            </div>
+		            <div class="form-group">
+		                <label for="nombre">Nombre:</label>
+		                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+		            </div>
+		            <div class="form-group">
+		                <label for="curso">Curso:</label>
+		                <input type="text" class="form-control" id="curso" th:field="*{curso}" required>
+		            </div>
+		            <div class="form-group">
+		                <label for="cantidadHoras">Cantidad de Horas:</label>
+		                <input type="text" class="form-control" id="cantidadHoras" th:field="*{cantidadHoras}" required>
+		            </div>
+		            <div class="form-group">
+		                <label for="modalidad">Modalidad:</label>
+		                <input type="text" class="form-control" id="modalidad" th:field="*{modalidad}" required>
+		            </div>
+		            <div class="form-group">
+		                <label for="docente">Docente:</label>
+		                <select class="form-control" id="docente" th:field="*{docente.legajo}" required>
+		                    <option th:each="docente : ${docentes}" th:value="${docente.legajo}" th:text="${docente.nombre} + ' ' + ${docente.apellido}"></option>
+		                </select>
+		            </div>
+		            <div class="form-group">
+		                <label for="carrera">Carrera:</label>
+		                <select class="form-control" id="carrera" th:field="*{carrera.codigo}" required>
+		                    <option th:each="carrera : ${carreras}" th:value="${carrera.codigo}" th:text="${carrera.nombre}"></option>
+		                </select>
+		            </div>
+		            <button type="submit" class="btn btn-primary">Guardar</button>
+		        </form>
+				</div>
+					
+					<footer data-th-replace="~{fragments/footer :: footer}">
+					</footer> 
+					<script
+						data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+				</body>
+				</html>
