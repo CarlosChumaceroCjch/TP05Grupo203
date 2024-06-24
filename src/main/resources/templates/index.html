@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Tp5(index)</title>
+	<link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+
+</head>
+
+<body>
+	<nav></nav>
+	<!-- Header -->
+	<div data-th-replace="~{fragments/header :: navbar}"></div>
+
+	<!-- Contenido principal -->
+	<div class="row">
+		<main class="col-9">
+			<div class="row">
+				<!--Noticias Reciente-->
+				<section class="col-6">
+					<div id="carouselExampleCaptions" class="carousel slide">
+						<div class="carousel-indicators">
+							<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
+								class="active" aria-current="true" aria-label="Slide 1"></button>
+							<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+								aria-label="Slide 2"></button>
+							<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+								aria-label="Slide 3"></button>
+						</div>
+						<div class="carousel-inner">
+							<div class="carousel-item active">
+								<img src="/images/Examenes.jpg" class="d-block w-100" alt="...">
+								<div class="carousel-caption d-none d-md-block">
+									<h5>Mesas de Examen</h5>
+									<p>Habilitada la inscripcion.</p>
+								</div>
+							</div>
+							<div class="carousel-item">
+								<img src="/images/Registro-Estudiantes.jpg" class="d-block w-100" alt="...">
+								<div class="carousel-caption d-none d-md-block">
+									<h5>Inscripcion alumnos</h5>
+									<p></p>
+								</div>
+							</div>
+							<div class="carousel-item">
+								<img src="/images/Registro-Docentes.jpg" class="d-block w-100" alt="...">
+								<div class="carousel-caption d-none d-md-block">
+									<h5>Registro Docentes</h5>
+									<p></p>
+								</div>
+							</div>
+						</div>
+						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+							data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+							data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Next</span>
+						</button>
+					</div>
+				</section>
+				<!--Descripcion-->
+				<section class="col-6">
+					<div class="accordion accordion-flush" id="accordionFlushExample">
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#flush-collapseOne" aria-expanded="false"
+									aria-controls="flush-collapseOne">
+									Carreras de Grado
+								</button>
+							</h2>
+							<div id="flush-collapseOne" class="accordion-collapse collapse"
+								data-bs-parent="#accordionFlushExample">
+								<div class="accordion-body">
+									<ul>
+										<li> Ingenieria Quimica</li>
+										<li> Ingenieria De Minas</li>
+										<li> Ingenieria Industrial</li>
+										<li> Ingenieria Informatica</li>
+										<li> Licenciatura en Sistemas</li>
+										<li> Licenciatura en Tecnologia de los Alimentos</li>
+										<li> Licenciatura en Ciencias Geologicas</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#flush-collapseTwo" aria-expanded="false"
+									aria-controls="flush-collapseTwo">
+									Carreras de Pregrado
+								</button>
+							</h2>
+							<div id="flush-collapseTwo" class="accordion-collapse collapse"
+								data-bs-parent="#accordionFlushExample">
+								<div class="accordion-body">
+									<ul>
+										<li> Analista Programador Universitario</li>
+										<li> Tecnicatura Universitaria en Diseño Integral de Videojuegos</li>
+										<li> Tecnicatura Universitaria en Perforaciones</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#flush-collapseThree" aria-expanded="false"
+									aria-controls="flush-collapseThree">
+									Servicios Disponibles
+								</button>
+							</h2>
+							<div id="flush-collapseThree" class="accordion-collapse collapse"
+								data-bs-parent="#accordionFlushExample">
+								<div class="accordion-body">
+									<ul>
+										<li>
+											<a href="https://www.fi.unju.edu.ar/coursera.html"> Coursera</a>
+										</li>
+										<li>
+											<a href="https://www.fi.unju.edu.ar/gsuite.html"> G-Suite</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#flush-collapseFour" aria-expanded="false"
+									aria-controls="flush-collapseFour">
+									Como llegar a la Fi
+								</button>
+							</h2>
+							<div id="flush-collapseFour" class="accordion-collapse collapse"
+								data-bs-parent="#accordionFlushExample">
+								<div class="accordion-body">
+									<ul>
+
+										<li>
+											<a
+												href="https://www.google.com.ar/maps/place/Ing.+Mario+Italo+Palanca+10,+Y4600+San+Salvador+de+Jujuy,+Jujuy/@-24.1889168,-65.2955433,17z/data=!3m1!4b1!4m6!3m5!1s0x941b0f5bcae8e8cb:0x159e6175b8a11422!8m2!3d-24.1889217!4d-65.2929684!16s%2Fg%2F11vstrp4wn?entry=ttu">
+												Ítalo Palanca Nº 10
+											</a>
+										</li>
+										<li>San Salvador de Jujuy -Jujuy - Argentina</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</main>
+
+		<aside class="col-3">
+			<div class="card" style="width: 17rem;">
+				<img src="images/Aside.jpg" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">Ayuda</h5>
+				</div>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item"><a href="">Biblioteca</a></li>
+					<li class="list-group-item"><a href="">Calendario academico</a></li>
+					<li class="list-group-item"><a href="">Aulas Virtuales</a></li>
+				</ul>
+			</div>
+
+		</aside>
+	</div>
+	<footer data-th-replace="~{fragments/footer :: footer}">
+	</footer>
+	<script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>
