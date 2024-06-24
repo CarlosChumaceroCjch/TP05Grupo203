@@ -8,7 +8,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
-import ar.edu.unju.fi.dto.DocenteDTO;
+import ar.edu.unju.fi.DTO.DocenteDTO;
 import ar.edu.unju.fi.model.Docente;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)

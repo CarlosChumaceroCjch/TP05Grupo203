@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unju.fi.dto.DocenteDTO;
+import ar.edu.unju.fi.DTO.DocenteDTO;
 import ar.edu.unju.fi.model.Docente;
 import ar.edu.unju.fi.service.DocenteService;
 
@@ -68,7 +68,7 @@ public class DocenteController {
 		}
 	
 	@PostMapping("/modificarDocente")
-	public ModelAndView updateCarrera(@ModelAttribute("nuevoDocente") Docente docenteModificado) {
+	public ModelAndView updateDocente(@ModelAttribute("nuevoDocente") DocenteDTO docenteModificado) {
 					
 		//guardar
 		docenteService.modificarDocente(docenteModificado);

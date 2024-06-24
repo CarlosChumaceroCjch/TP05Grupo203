@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ar.edu.unju.fi.dto.DocenteDTO;
+import ar.edu.unju.fi.DTO.DocenteDTO;
 import ar.edu.unju.fi.map.DocenteMapDTO;
 import ar.edu.unju.fi.model.Docente;
 import ar.edu.unju.fi.repository.DocenteRepository;
@@ -48,15 +48,15 @@ public class DocenteServiceImp implements DocenteService{
 	}
 
 	@Override
-	public void modificarDocente(Docente docente) {
+	public void modificarDocente(DocenteDTO docenteDTO) {
 		// TODO Auto-generated method stub
 		List<Docente> docentes=docenteRepository.findAll();
-		docente.setEstado(true);
+		docenteDTO.setEstado(true);
 		for(int i=0;i<docentes.size();i++) {
 			Docente docent = docentes.get(i);
-			if(docent.getLegajo().equals(docente.getLegajo())) {
-				docentes.set(i, docente);
-				docenteRepository.save(docente);
+			if(docent.getLegajo().equals(docenteDTO.getLegajo())) {
+				//docentes.set(i, docenteDTO);
+				docenteRepository.save(carreraMapDTO.convertirDocenteDTOADocente(docenteDTO));
 				break;
 			}
 		}
