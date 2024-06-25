@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<link data-th-href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+	<link data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet">
 	<title>Formulario</title>
 </head>
 <body>
@@ -13,9 +13,13 @@
 	<main class="container">
 		<h1> FORMULARIO ALUMNO</h1>
 		<form data-th-object="${nuevoAlumno}" data-th-action="${flag}?@{/modificarAlumno}:@{/guardarAlumno}"  method="post">
+			<div class="mb-3 col-sm-6">
+    			<label for="lu" class="form-label">Libreta Universitaria (LU)</label>
+    			<input type="number" class="form-control" id="lu" data-th-field="*{lu}" data-th-readonly=${flag}>
+  			</div>
   			<div class="mb-3 col-sm-6">
     			<label for="dni" class="form-label">DNI</label>
-    			<input type="number" class="form-control" id="dni" data-th-field="*{dni}" data-th-readonly=${flag}>
+    			<input type="number" class="form-control" id="dni" data-th-field="*{dni}">
   			</div>
   			<div class="mb-3 col-sm-6">
     			<label for="nombre" class="form-label">Nombre</label>
@@ -42,15 +46,18 @@
     			<input type="text" class="form-control" id="domicilio" data-th-field="*{domicilio}">
   			</div>
   			<div class="mb-3 col-sm-6">
-    			<label for="lu" class="form-label">Libreta Universitaria (LU)</label>
-    			<input type="number" class="form-control" id="lu" data-th-field="*{lu}">
-  			</div>
+				<label for="estado" class="form-label" >Estado</label>
+				<select data-th-field="*{estado}" class="form-control" required>
+					<option data-th-value="true">True</option>
+					<option data-th-value="false">False</option>
+				</select>
+			</div>
   			<button type="submit" class="btn btn-primary">Guardar</button>
 		</form>
 	</main>
 	
 	<footer data-th-replace="~{/fragments/footer :: footer}"></footer>
 	
-	<script type="text/javascript" data-th-src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script type="text/javascript" data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

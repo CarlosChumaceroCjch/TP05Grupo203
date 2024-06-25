@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.DTO.CarreraDTO;
 import ar.edu.unju.fi.model.Carrera;
-import ar.edu.unju.fi.services.CarreraService;
+import ar.edu.unju.fi.service.CarreraService;
 
 @Controller
 public class CarreraController {

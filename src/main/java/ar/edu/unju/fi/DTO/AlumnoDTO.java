@@ -1,20 +1,18 @@
-package ar.edu.unju.fi.model;
+package ar.edu.unju.fi.DTO;
 
 import java.time.LocalDate;
 
 import org.springframework.stereotype.Component;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @Component
-@Entity
-public class Alumno {
-	
-	@Id
+public class AlumnoDTO {
 	private String lu;
 	private Integer dni;
 	private String nombre;
@@ -24,8 +22,4 @@ public class Alumno {
 	private LocalDate fechaNacimiento;
 	private String domicilio;
 	private Boolean estado;
-	
 }
-
-
-

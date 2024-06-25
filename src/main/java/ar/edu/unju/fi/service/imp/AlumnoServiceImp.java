@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.edu.unju.fi.DTO.AlumnoDTO;
+import ar.edu.unju.fi.map.AlumnoMapDTO;
 import ar.edu.unju.fi.model.Alumno;
 import ar.edu.unju.fi.repository.AlumnoRepository;
 import ar.edu.unju.fi.service.AlumnoService;
@@ -15,26 +17,29 @@ public class AlumnoServiceImp implements AlumnoService{
 	@Autowired
 	AlumnoRepository alumnoRepository;
 	
+	@Autowired
+	AlumnoMapDTO alumnoMapDTO;
+	
 	@Override
-	public void guardarAlumno(Alumno alumno) {
+	public void guardarAlumno(AlumnoDTO alumno) {
 		// TODO Auto-generated method stub
-		alumnoRepository.save(alumno);
+		alumnoRepository.save(alumnoMapDTO.convertirDTOaAlumno(alumno));
 	}
 
 	@Override
 	public List<Alumno> mostrarAlumnos() {
 		// TODO Auto-generated method stub
-		return alumnoRepository.findAll();
+		return alumnoRepository.findAlumnoByEstado(true);
 	}
 
 	@Override
-	public void modificarAlumno(Alumno alumno) {
+	public void modificarAlumno(AlumnoDTO alumno) {
 		// TODO Auto-generated method stub
 		List<Alumno> alumnos = alumnoRepository.findAll();
 		for (int i=0; i<alumnos.size(); i++) {
 			Alumno alum = alumnos.get(i);
 			if(alum.getLu().equals(alumno.getLu())) {
-				alumnos.set(i, alumno);
+				alumnoRepository.save(alumnoMapDTO.convertirDTOaAlumno(alumno));
 				break;
 			}
 		}
@@ -44,7 +49,14 @@ public class AlumnoServiceImp implements AlumnoService{
 	public void eliminarAlumno(String lu) {
 		// TODO Auto-generated method stub
 		List<Alumno> alumnos = alumnoRepository.findAll();
-		alumnos.removeIf(alumno -> alumno.getLu().equals(lu));
+		for (int i = 0; i < alumnos.size(); i++) {
+			Alumno alum = alumnos.get(i);
+			if (alum.getLu().equals(lu)) {
+				alum.setEstado(false);
+				alumnoRepository.save(alum);
+				break;
+			}
+		}
 	}
 
 	@Override
