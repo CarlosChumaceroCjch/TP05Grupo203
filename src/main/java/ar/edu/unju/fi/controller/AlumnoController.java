@@ -25,6 +25,7 @@ public class AlumnoController {
 		ModelAndView modelView = new ModelAndView("formAlumno");
 		
 		modelView.addObject("nuevoAlumno", nuevoAlumno);
+		modelView.addObject("flag", false);
 		return modelView;
 	};
 	
@@ -54,6 +55,7 @@ public class AlumnoController {
 		ModelAndView modelView = new ModelAndView("formAlumno");
 		
 		modelView.addObject("nuevoAlumno", alumnoAModificar);
+		modelView.addObject("flag", true);
 		return modelView;
 	};
 	

@@ -34,6 +34,10 @@ public class Alumno {
 	@NonNull
 	private Boolean estado;
 	
+	
+	public Alumno() {
+		
+	}
 	public String getLu() {
 		return lu;
 	}

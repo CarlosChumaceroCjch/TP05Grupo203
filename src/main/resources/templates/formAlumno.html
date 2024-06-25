@@ -12,10 +12,10 @@
 	
 	<main class="container">
 		<h1> FORMULARIO ALUMNO</h1>
-		<form data-th-object="${nuevoAlumno}" data-th-action="@{/modificarAlumno}:@{/guardarAlumno}"  method="post">
+		<form data-th-object="${nuevoAlumno}" data-th-action="${flag}?@{/modificarAlumno}:@{/guardarAlumno}"  method="post">
   			<div class="mb-3 col-sm-6">
     			<label for="dni" class="form-label">DNI</label>
-    			<input type="number" class="form-control" id="dni" data-th-field="*{nuevoAlumno.dni}">
+    			<input type="number" class="form-control" id="dni" data-th-field="*{dni}" data-th-readonly=${flag}>
   			</div>
   			<div class="mb-3 col-sm-6">
     			<label for="nombre" class="form-label">Nombre</label>
@@ -35,7 +35,7 @@
   			</div>
   			<div class="mb-3 col-sm-6">
     			<label for="nacimiento" class="form-label">Fecha de nacimiento</label>
-    			<input type="date" class="form-control" id="nacimiento" data-th-field="*{nacimiento}">
+    			<input type="date" class="form-control" id="nacimiento" data-th-field="*{fechaNacimiento}">
   			</div>
   			<div class="mb-3 col-sm-6">
     			<label for="domicilio" class="form-label">Domicilio</label>
