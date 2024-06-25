@@ -25,20 +25,6 @@ public class Alumno {
 	private String domicilio;
 	private Boolean estado;
 	
-	public String getLu() {
-		return lu;
-	}
-	public void setLu(String lu) {
-		this.lu = lu;
-	}
-	public Boolean getEstado() {
-		return estado;
-	}
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
-	}
-	
-	
 }
 
 

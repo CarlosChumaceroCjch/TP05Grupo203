@@ -66,7 +66,6 @@ public class AlumnoController {
 		ModelAndView modelView = new ModelAndView("listaDeAlumnos");
 		
 		modelView.addObject("listadoAlumnos", alumnoService.mostrarAlumnos());
-		modelView.addObject("flag", true);
 		return modelView;
 
 	}
