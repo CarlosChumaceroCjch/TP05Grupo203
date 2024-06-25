@@ -1,4 +1,4 @@
-package ar.edu.unju.fi.services;
+package ar.edu.unju.fi.service;
 
 import java.util.List;
 

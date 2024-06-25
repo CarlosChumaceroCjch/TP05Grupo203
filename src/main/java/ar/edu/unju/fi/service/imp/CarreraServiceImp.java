@@ -1,4 +1,4 @@
-package ar.edu.unju.fi.services;
+package ar.edu.unju.fi.service.imp;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import ar.edu.unju.fi.DTO.CarreraDTO;
 import ar.edu.unju.fi.map.CarreraMapDTO;
 import ar.edu.unju.fi.model.Carrera;
 import ar.edu.unju.fi.repository.CarreraRepository;
+import ar.edu.unju.fi.service.CarreraService;
 
 @Service
 public class CarreraServiceImp implements CarreraService{

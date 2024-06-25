@@ -29,7 +29,7 @@ public class AlumnoServiceImp implements AlumnoService{
 	@Override
 	public List<Alumno> mostrarAlumnos() {
 		// TODO Auto-generated method stub
-		return alumnoRepository.buscarAlumnoPorEstado(true);
+		return alumnoRepository.findAlumnoByEstado(true);
 	}
 
 	@Override

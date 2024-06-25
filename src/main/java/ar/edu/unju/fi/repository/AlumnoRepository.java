@@ -9,5 +9,5 @@ import ar.edu.unju.fi.model.Alumno;
 
 @Repository
 public interface AlumnoRepository extends JpaRepository<Alumno, String> {
-	List<Alumno> buscarAlumnoPorEstado(Boolean estado);
+	List<Alumno> findAlumnoByEstado(Boolean estado);
 }
