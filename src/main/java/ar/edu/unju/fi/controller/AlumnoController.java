@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unju.fi.DTO.AlumnoDTO;
 import ar.edu.unju.fi.model.Alumno;
 import ar.edu.unju.fi.service.AlumnoService;
 
@@ -15,7 +16,7 @@ import ar.edu.unju.fi.service.AlumnoService;
 public class AlumnoController {
 	
 	@Autowired
-	Alumno nuevoAlumno;
+	AlumnoDTO nuevoAlumnoDTO;
 	
 	@Autowired
 	AlumnoService alumnoService;
@@ -24,7 +25,8 @@ public class AlumnoController {
 	public ModelAndView mostrarFormulario() {
 		ModelAndView modelView = new ModelAndView("formAlumno");
 		
-		modelView.addObject("nuevoAlumno", nuevoAlumno);
+		modelView.addObject("nuevoAlumno", nuevoAlumnoDTO);
+		modelView.addObject("flag", false);
 		return modelView;
 	};
 	
@@ -37,7 +39,7 @@ public class AlumnoController {
 	}
 	
 	@PostMapping("/guardarAlumno")
-	public ModelAndView guardarAlumno(@ModelAttribute("nuevoAlumno") Alumno alumno) {
+	public ModelAndView guardarAlumno(@ModelAttribute("nuevoAlumno") AlumnoDTO alumno) {
 		
 		alumnoService.guardarAlumno(alumno);
 		ModelAndView modelView = new ModelAndView("listaDeAlumnos");
@@ -54,16 +56,19 @@ public class AlumnoController {
 		ModelAndView modelView = new ModelAndView("formAlumno");
 		
 		modelView.addObject("nuevoAlumno", alumnoAModificar);
+		modelView.addObject("flag", true);
 		return modelView;
 	};
 	
 	@PostMapping("modificarAlumno")
-	public ModelAndView modificarAlumno(@ModelAttribute("nuevoAlumno") Alumno alumno) {
-		alumnoService.modificarAlumno(alumno);
+	public ModelAndView modificarAlumno(@ModelAttribute("nuevoAlumno") AlumnoDTO alumnoModificar) {
+		alumnoService.modificarAlumno(alumnoModificar);
 		ModelAndView modelView = new ModelAndView("listaDeAlumnos");
 		
 		modelView.addObject("listadoAlumnos", alumnoService.mostrarAlumnos());
+		modelView.addObject("flag", true);
 		return modelView;
+
 	}
 	
 	@GetMapping("/eliminarAlumno/{lu}")
