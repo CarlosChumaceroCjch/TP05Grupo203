@@ -16,7 +16,7 @@ public interface CarreraMapDTO {
 	
 	@Mapping (source="nombre", target="nombre")
 	@Mapping (source="cantAnios", target="cantAnios")
-	@Mapping (source="codigo", target="codigo")
+	@Mapping (source="cod", target="codigo")
 	@Mapping (source="status", target="status")
 	CarreraDTO convertirCarreraACarreraDto (Carrera c);
 	

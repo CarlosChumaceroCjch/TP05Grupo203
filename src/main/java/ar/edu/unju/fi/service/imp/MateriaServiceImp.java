@@ -46,6 +46,27 @@ public class MateriaServiceImp implements MateriaService{
 
     @Override
     public void eliminar(Long id) {
-        materiaRepository.deleteById(id);
+    	List<Materia>listadoMaterias = materiaRepository.findAll();
+    	//Borrado logico
+    	for (Materia m: listadoMaterias) {
+    		if(m.getCodigo().equals(id)) {
+    			m.setEstado(false);
+    			materiaRepository.save(m);
+    			break;
+    		}
+    	}
+        //materiaRepository.deleteById(id);
     }
+
+	@Override
+	public void modificarMateria(MateriaDTO mDTO) {
+		List<Materia>listadoMaterias = materiaRepository.findAll();
+    	for (Materia m: listadoMaterias) {
+    		if(m.getCodigo().equals(mDTO.getCodigo())) {
+    			m.setEstado(false);
+    			materiaRepository.save(materiaMapDTO.convertirMateriaDTOAMateria(mDTO));
+    			break;
+    		}
+    	}
+	}
 }

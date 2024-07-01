@@ -55,7 +55,7 @@ public class CarreraController {
 		
 	}
 	
-	@GetMapping("/eliminarCarrera/{codigo}")
+	@GetMapping("/eliminarCarrera/{cod}")
 	public ModelAndView eliminarCarreraDeLista(@PathVariable(name="codigo") String codigo) {
 
 		carreraService.eliminarCarrera(codigo);
@@ -65,7 +65,7 @@ public class CarreraController {
 		return modelView;
 	}
 	
-	@GetMapping("/modificarCarrera/{codigo}")
+	@GetMapping("/modificarCarrera/{cod}")
 	public ModelAndView modificarCarrera(@PathVariable(name="codigo")String codigo) {
 		Carrera carrera = carreraService.buscarCarrera(codigo);
 		ModelAndView modelView =new ModelAndView("formCarrera");

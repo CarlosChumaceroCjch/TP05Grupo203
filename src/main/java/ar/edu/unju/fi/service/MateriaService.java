@@ -14,5 +14,6 @@ public interface MateriaService {
     List<Materia> listar();
     void guardar(MateriaDTO materiaDTO);
     MateriaDTO obtenerPorId(Long codigo);
+    public void modificarMateria(MateriaDTO m);
     void eliminar(Long codigo);
 }

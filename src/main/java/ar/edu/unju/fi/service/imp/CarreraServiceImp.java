@@ -40,7 +40,7 @@ public class CarreraServiceImp implements CarreraService{
 		List<Carrera>listadoCarreras = carreraRepository.findAll();
 		for (int i = 0; i < listadoCarreras.size(); i++) {
 			Carrera carrera = listadoCarreras.get(i);
-			if (carrera.getCodigo().equals(codigo)) {
+			if (carrera.getCod().equals(codigo)) {
 				carrera.setStatus(false);
 				carreraRepository.save(carrera);
 				break;
@@ -53,7 +53,7 @@ public class CarreraServiceImp implements CarreraService{
 		List<Carrera>listadoCarreras = carreraRepository.findAll();
 		for (int i = 0; i < listadoCarreras.size(); i++) {
 			Carrera carrera = listadoCarreras.get(i);
-			if (carrera.getCodigo().equals(c.getCodigo())) {
+			if (carrera.getCod().equals(c.getCodigo())) {
 				carreraRepository.save(carreraMapDTO.convertirDTOaCarrera(c));
 				break;
 			}
@@ -65,7 +65,7 @@ public class CarreraServiceImp implements CarreraService{
 	public Carrera buscarCarrera(String codigo) {
 		List<Carrera>listadoCarreras = carreraRepository.findAll();
 		for (Carrera c : listadoCarreras) {
-			if (c.getCodigo().equals(codigo)) {
+			if (c.getCod().equals(codigo)) {
 				return c;
 			}
 		}
