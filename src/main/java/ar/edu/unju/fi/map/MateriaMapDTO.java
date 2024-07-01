@@ -18,12 +18,12 @@ public interface MateriaMapDTO {
 	@Mapping(source = "curso", target = "curso")
 	@Mapping(source = "cantHoras", target = "cantHoras")
 	@Mapping(source = "modalidad", target = "modalidad")
-	//@Mapping(source = "docente", target = "docente")
-	//@Mapping(source = "carrera", target = "carrera")
+	@Mapping(source = "docente", target = "docente")
+	@Mapping(source = "carrera", target = "carrera")
 	@Mapping(source = "estado", target = "estado")
 	
-	MateriaDTO convertirMateriaAMateriaDTO(Materia m);
 	
+	MateriaDTO convertirMateriaAMateriaDTO(Materia m);
 	@InheritInverseConfiguration
 	Materia convertirMateriaDTOAMateria(MateriaDTO m);
 	

@@ -1,8 +1,14 @@
 package ar.edu.unju.fi.model;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 
 @Data
@@ -11,8 +17,10 @@ import lombok.Data;
 public class Carrera {
 	
 	@Id
-	private String codigo;
+	private String cod;
 	private String nombre;
 	private Integer cantAnios;
 	private Boolean status;
+	@OneToMany(mappedBy = "carrera",cascade = CascadeType.ALL )
+	private List<Materia> materias;
 }
