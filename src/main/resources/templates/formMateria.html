@@ -23,7 +23,7 @@
 		            </div>
 		            <div class="form-group">
 		                <label for="curso">Curso:</label>
-		                <input type="text" class="form-control" id="curso" th:field="*{curso}" required>
+		                <input type="number" class="form-control" id="curso" th:field="*{curso}" required>
 		            </div>
 		            <div class="form-group">
 		                <label for="cantidadHoras">Cantidad de Horas:</label>
@@ -46,13 +46,14 @@
 		            
 		            <div class="form-group">
 		                <label for="docente">Docente:</label>
-		                <select class ="form-select"id="docente" th:field="*{docente}" required>
+		                <select class ="form-select"id="docente" th:field="*{docente.legajo}" required>
+		                    <option value="">Seleccionar Docente...</option>
 		                    <option th:each="docente : ${listadoDocentes}" th:value="${docente.legajo}" th:text="${docente.nombre} + ' ' + ${docente.apellido}"></option>
 		                </select>
 		            </div>
 		            <div class="form-group">
 		                <label for="carrera">Carrera:</label>
-		                <select class="form-select" id="carrera" th:field="*{carrera}" required>
+		                <select class="form-select" id="carrera" th:field="*{carrera.cod}" required>
 		                	<option value="">Seleccionar Carrera...</option>
 		                    <option th:each="carrera : ${listadoCarreras}" th:value="${carrera.cod}" th:text="${carrera.nombre}"></option>
 		                </select>

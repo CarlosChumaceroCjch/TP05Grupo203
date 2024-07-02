@@ -45,7 +45,16 @@
     			<label for="domicilio" class="form-label">Domicilio</label>
     			<input type="text" class="form-control" id="domicilio" data-th-field="*{domicilio}">
   			</div>
-  			<div class="mb-3 col-sm-6">
+			<div class="form-group">
+				<label for="carreara">Docente:</label> <select class="form-select"
+					id="carrera" data-th-field="*{carrera.cod}" required>
+					<option value="">Seleccionar Carrera</option>
+					<option data-th-each="carrera : ${listadoCarreras}"
+						data-th-value="${carrera.cod}"
+						data-th-text="${carrera.nombre}"></option>
+				</select>
+			</div>
+			<div class="mb-3 col-sm-6">
 				<label for="estado" class="form-label" >Estado</label>
 				<select data-th-field="*{estado}" class="form-control" required>
 					<option data-th-value="true">True</option>
