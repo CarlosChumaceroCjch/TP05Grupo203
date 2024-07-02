@@ -53,7 +53,7 @@ public class CarreraServiceImp implements CarreraService{
 		List<Carrera>listadoCarreras = carreraRepository.findAll();
 		for (int i = 0; i < listadoCarreras.size(); i++) {
 			Carrera carrera = listadoCarreras.get(i);
-			if (carrera.getCod().equals(c.getCodigo())) {
+			if (carrera.getCod().equals(c.getCod())) {
 				carreraRepository.save(carreraMapDTO.convertirDTOaCarrera(c));
 				break;
 			}

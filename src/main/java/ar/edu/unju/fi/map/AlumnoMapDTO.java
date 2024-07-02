@@ -21,6 +21,7 @@ public interface AlumnoMapDTO {
 	@Mapping (source="fechaNacimiento", target="fechaNacimiento")
 	@Mapping (source="domicilio", target="domicilio")
 	@Mapping (source="estado", target="estado")
+	@Mapping (source="carrera", target="carrera")
 	AlumnoDTO convertirAlumnoAAlumnoDto (Alumno alumno);
 	
 

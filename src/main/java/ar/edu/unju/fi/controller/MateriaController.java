@@ -42,10 +42,23 @@ public class MateriaController {
 	}
 	@PostMapping("/guardarMateria")
 	public ModelAndView guardarMateria(@ModelAttribute("nuevaMateria") MateriaDTO materia) {
+		/*
+		 * System.out.println("el codigo docente es "+materia.getDocente().getLegajo());
+		 * System.out.println("el codigo carrera es "+materia.getCarrera().getCod());
+		 */
+		materia.setCarrera(carreraService.buscarCarrera(materia.getCarrera().getCod()));
+		materia.setDocente(docenteService.buscarDocente(materia.getDocente().getLegajo()));
 		materiaService.guardar(materia);
 		ModelAndView modelView = new ModelAndView("listaDeMaterias");
-		modelView.addObject("listadoMaterias",materiaService.listar());
+		
+		/*
+		 * try { materiaService.guardar(materia); }catch(Exception e){
+		 * modelView.addObject("errors",true);
+		 * modelView.addObject("cargamateriaErrorMessage","Error al cargar en BD"+e.
+		 * getMessage()); }
+		 **/modelView.addObject("listadoMaterias",materiaService.listar()); 
 		return modelView;
+		 
 	}
 	
 	@GetMapping("/eliminarMateria/{codigo}")

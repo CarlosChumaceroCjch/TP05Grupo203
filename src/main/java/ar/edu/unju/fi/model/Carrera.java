@@ -21,6 +21,8 @@ public class Carrera {
 	private String nombre;
 	private Integer cantAnios;
 	private Boolean status;
+	@OneToMany(mappedBy="carrera",cascade = CascadeType.ALL)
+	private List<Alumno> alumnos;
 	@OneToMany(mappedBy = "carrera",cascade = CascadeType.ALL )
 	private List<Materia> materias;
 }

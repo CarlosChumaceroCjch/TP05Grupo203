@@ -5,9 +5,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 
@@ -27,8 +30,11 @@ public class Alumno {
 	private String domicilio;
 	private Boolean estado;
 	//tp5Parte2
-	//@ManyToMany(mappedBy="alumnos")
-	//private List<Materia> Materias;
+	@ManyToMany(mappedBy="alumnos")
+	private List<Materia> Materias;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="cod")
+	private Carrera carrera;
 }
 
 

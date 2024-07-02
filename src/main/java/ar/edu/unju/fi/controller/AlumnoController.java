@@ -11,21 +11,24 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unju.fi.DTO.AlumnoDTO;
 import ar.edu.unju.fi.model.Alumno;
 import ar.edu.unju.fi.service.AlumnoService;
+import ar.edu.unju.fi.service.CarreraService;
 
 @Controller
 public class AlumnoController {
 	
 	@Autowired
 	AlumnoDTO nuevoAlumnoDTO;
-	
 	@Autowired
 	AlumnoService alumnoService;
+	@Autowired
+	CarreraService carreraService;
 	
 	@GetMapping("/formularioAlumno")
 	public ModelAndView mostrarFormulario() {
 		ModelAndView modelView = new ModelAndView("formAlumno");
 		
 		modelView.addObject("nuevoAlumno", nuevoAlumnoDTO);
+		modelView.addObject("listadoCarreras",carreraService.MostrarCarreras());
 		modelView.addObject("flag", false);
 		return modelView;
 	};
@@ -40,7 +43,7 @@ public class AlumnoController {
 	
 	@PostMapping("/guardarAlumno")
 	public ModelAndView guardarAlumno(@ModelAttribute("nuevoAlumno") AlumnoDTO alumno) {
-		
+		alumno.setCarrera(carreraService.buscarCarrera(alumno.getCarrera().getCod()));
 		alumnoService.guardarAlumno(alumno);
 		ModelAndView modelView = new ModelAndView("listaDeAlumnos");
 		

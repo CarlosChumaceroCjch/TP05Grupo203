@@ -32,9 +32,9 @@
 					<td th:text="${materia.curso}"></td>
 					<td th:text="${materia.cantHoras}"></td>
 					<td th:text="${materia.modalidad}"></td>
-					<td th:text="${materia.estado}"></td>
 					<td th:text="${materia.docente.nombre}"></td>
 					<td th:text="${materia.carrera.nombre}"></td>
+					<td th:text="${materia.estado}"></td>
 					<td><a th:href="@{'/modificarMateria/' + ${materia.codigo}}"
 						class="btn btn-primary">Editar</a> <a
 						th:href="@{'/eliminarMateria/' + ${materia.codigo}}"
