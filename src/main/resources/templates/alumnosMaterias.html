@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet">
+	<title>Consulta</title>
+</head>
+<body>
+
+	<header data-th-replace="~{/fragments/header :: navbar}"></header>
+	
+	<nav class="navbar bg-body-tertiary">
+  		<div class="container-fluid">
+  			<h2>Consulta de los alumnos por materias:</h2>
+    		<form class="d-flex" data-th-object="" data-th-action=""  method="post">
+      			<select data-th-field="" class="form-control me-2"> <!-- data-th:each="m : ${listadoMaterias}" -->
+      				<option></option> <!-- data-th-value="${m.nombre}" data-th:text="${m.nombre}"-->	
+      			</select>
+      			<button class="btn btn-outline-success" type="submit">Consultar</button>
+    		</form>
+  		</div>
+	</nav>	
+	
+	<main class="container"></main>
+	
+	<footer data-th-replace="~{/fragments/footer :: footer}"></footer>
+	
+	<script type="text/javascript" data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
