@@ -33,7 +33,7 @@ public class CarreraController {
 		ModelAndView modelView= new ModelAndView("formCarrera");
 		//Agrega el Objeto
 		modelView.addObject("nuevaCarrera",nuevaCarreraDTO);
-		modelView.addObject("Materias",materiaService.listar());
+		modelView.addObject("materias",materiaService.listar());
 		modelView.addObject("flag", false);
 		return modelView;
 		
@@ -71,7 +71,8 @@ public class CarreraController {
 		Carrera carrera = carreraService.buscarCarrera(cod);
 		ModelAndView modelView =new ModelAndView("formCarrera");
 		modelView.addObject("nuevaCarrera",carrera);
-		modelView.addObject("flag", true);		
+		modelView.addObject("materias", materiaService.listar());
+		modelView.addObject("flag", true);	
 		return modelView;
 	}
 	

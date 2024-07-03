@@ -1,6 +1,7 @@
 package ar.edu.unju.fi.service.imp;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,28 +55,34 @@ public class CarreraServiceImp implements CarreraService{
 
 	@Override
 	public void modifcarCarrera(CarreraDTO cDTO) {
-		Carrera c=carreraMapDTO.convertirDTOaCarrera(cDTO);
-		List<Carrera>listadoCarreras = carreraRepository.findAll();
-		for (int i = 0; i < listadoCarreras.size(); i++) {
-			Carrera carrera = listadoCarreras.get(i);
-			if (carrera.getCod().equals(c.getCod())) {
-				carreraRepository.save(c);
-				System.out.println("Entro bieny = "+ c.getMaterias().isEmpty());
-				break;
+			List<Carrera> listadoCarreras = carreraRepository.findAll();
+			for (int i = 0; i < listadoCarreras.size(); i++) {
+				Carrera carrera = listadoCarreras.get(i);
+				if (carrera.getCod().equals(cDTO.getCod())) {
+					Carrera c= carreraMapDTO.convertirDTOaCarrera(cDTO);
+					for(Materia m:c.getMaterias()) {
+						m.setCarrera(c);
+					}
+					carreraRepository.save(c);
+					break;
+				}
 			}
-		}
+			 
 		
 	}
 
 	@Override
 	public Carrera buscarCarrera(String codigo) {
 		List<Carrera>listadoCarreras = carreraRepository.findAll();
-		for (Carrera c : listadoCarreras) {
+		
+		for (Carrera c :listadoCarreras) {
 			if (c.getCod().equals(codigo)) {
 				return c;
 			}
 		}
 		return null;
 	}
+	
+	
 
 }

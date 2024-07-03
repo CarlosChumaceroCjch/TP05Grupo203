@@ -1,6 +1,6 @@
 package ar.edu.unju.fi.service;
 
-import ar.edu.unju.fi.model.Alumno;
+
 import ar.edu.unju.fi.model.Materia;
 
 import java.util.List;
