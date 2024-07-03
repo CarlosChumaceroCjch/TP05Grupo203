@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.DTO.CarreraDTO;
+
 import ar.edu.unju.fi.model.Carrera;
 import ar.edu.unju.fi.service.CarreraService;
+import ar.edu.unju.fi.service.MateriaService;
 
 @Controller
 public class CarreraController {
@@ -21,6 +23,9 @@ public class CarreraController {
 	
 	@Autowired
 	CarreraService carreraService;
+	
+	@Autowired
+	MateriaService materiaService;
 
 	@GetMapping("/formularioCarrera")
 	public ModelAndView getFormCarrera() {
@@ -28,6 +33,7 @@ public class CarreraController {
 		ModelAndView modelView= new ModelAndView("formCarrera");
 		//Agrega el Objeto
 		modelView.addObject("nuevaCarrera",nuevaCarreraDTO);
+		modelView.addObject("Materias",materiaService.listar());
 		modelView.addObject("flag", false);
 		return modelView;
 		
@@ -42,23 +48,18 @@ public class CarreraController {
 	
 	
 	@PostMapping("/guardarCarrera")
-	public ModelAndView saveCarrera(@ModelAttribute("nuevaCarrera") CarreraDTO c) {
-
-		//Guardado de carrera
-		carreraService.guardarCarrera(c);
-	
-		//mostrar la vista
+	public ModelAndView saveCarrera(@ModelAttribute("nuevaCarrera") CarreraDTO cDTO) {
+		carreraService.guardarCarrera(cDTO);
 		ModelAndView modelView= new ModelAndView("listaDeCarreras");
 		modelView.addObject("listadoCarreras",carreraService.MostrarCarreras());
-		
 		return modelView;
 		
 	}
 	
 	@GetMapping("/eliminarCarrera/{cod}")
-	public ModelAndView eliminarCarreraDeLista(@PathVariable(name="codigo") String codigo) {
+	public ModelAndView eliminarCarreraDeLista(@PathVariable(name="cod") String cod) {
 
-		carreraService.eliminarCarrera(codigo);
+		carreraService.eliminarCarrera(cod);
 		ModelAndView modelView = new ModelAndView("listaDeCarreras");
 		modelView.addObject("listadoCarreras",carreraService.MostrarCarreras());
 		
@@ -66,8 +67,8 @@ public class CarreraController {
 	}
 	
 	@GetMapping("/modificarCarrera/{cod}")
-	public ModelAndView modificarCarrera(@PathVariable(name="codigo")String codigo) {
-		Carrera carrera = carreraService.buscarCarrera(codigo);
+	public ModelAndView modificarCarrera(@PathVariable(name="cod")String cod) {
+		Carrera carrera = carreraService.buscarCarrera(cod);
 		ModelAndView modelView =new ModelAndView("formCarrera");
 		modelView.addObject("nuevaCarrera",carrera);
 		modelView.addObject("flag", true);		

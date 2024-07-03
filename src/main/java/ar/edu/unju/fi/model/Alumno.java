@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
@@ -30,7 +31,7 @@ public class Alumno {
 	private String domicilio;
 	private Boolean estado;
 	//tp5Parte2
-	@ManyToMany(mappedBy="alumnos")
+	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	private List<Materia> Materias;
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="cod")

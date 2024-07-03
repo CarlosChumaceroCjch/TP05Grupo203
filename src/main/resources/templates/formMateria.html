@@ -53,7 +53,7 @@
 		            </div>
 		            <div class="form-group">
 		                <label for="carrera">Carrera:</label>
-		                <select class="form-select" id="carrera" th:field="*{carrera.cod}" required>
+		                <select class="form-select" id="carrera" th:field="*{carrera.cod}" >
 		                	<option value="">Seleccionar Carrera...</option>
 		                    <option th:each="carrera : ${listadoCarreras}" th:value="${carrera.cod}" th:text="${carrera.nombre}"></option>
 		                </select>

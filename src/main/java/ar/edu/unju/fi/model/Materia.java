@@ -33,7 +33,7 @@ public class Materia {
     //Estado para filtrar y borrado logico
     private Boolean estado;
     //Tp5parte2
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy="Materias")
     private List<Alumno> alumnos;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="cod")

@@ -46,7 +46,7 @@ public class MateriaController {
 		 * System.out.println("el codigo docente es "+materia.getDocente().getLegajo());
 		 * System.out.println("el codigo carrera es "+materia.getCarrera().getCod());
 		 */
-		materia.setCarrera(carreraService.buscarCarrera(materia.getCarrera().getCod()));
+		//materia.setCarrera(carreraService.buscarCarrera(materia.getCarrera().getCod()));
 		materia.setDocente(docenteService.buscarDocente(materia.getDocente().getLegajo()));
 		materiaService.guardar(materia);
 		ModelAndView modelView = new ModelAndView("listaDeMaterias");
