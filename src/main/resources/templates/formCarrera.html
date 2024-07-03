@@ -14,10 +14,10 @@
 	<div class="container">
 		<h1>Formulario Carrera</h1>
 		<form data-th-object="${nuevaCarrera}"
-			data-th-Action="${flag}?@{/modificarCarrera}:@{/guardarCarrera}" method="post">
+			data-th-action="${flag}?@{/modificarCarrera}:@{/guardarCarrera}" method="post">
 			<div class="col-md-4">
-				<label for="codigo" class="form-label">Codigo</label> <input
-					type="text" class="form-control" id="codigo"
+				<label for="cod" class="form-label">Codigo</label> <input
+					type="text" class="form-control" id="cod"
 					data-th-field="*{cod}" data-th-readonly=${flag}>
 			</div>
 
@@ -35,9 +35,9 @@
 			<!-- Listado de amterias padre -->
 			<div class="col-md-4">
 	            <label class="form-label" for ="materias">Materias</label>
-	            <select id="materias" data-th-field="*{materias}" class="form-control" required multiple><br>
+	            <select id="materias" th:field="*{materias}" class="form-control" required multiple>
 	                <option value="">Seleccionar materia</option>
-	                <option data-th-each="materia : ${Materias}" data-th-value="${materia.codigo}" data-th-text="${materia.nombre}"></option>
+	                <option th:each="materia : ${materias}" data-th-value="${materia.codigo}" data-th-text="${materia.nombre}"></option>
 	            </select>
 	        </div>
 

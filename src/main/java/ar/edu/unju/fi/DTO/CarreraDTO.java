@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Data
 @Getter
@@ -17,9 +18,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @Component
 public class CarreraDTO {
+	private String cod;
 	private String nombre;
 	private Integer cantAnios;
-	private String cod;
 	private Boolean status;
 	private List<Alumno> alumnos;
 	private List<Materia> materias;

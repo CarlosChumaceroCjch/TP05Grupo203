@@ -38,6 +38,8 @@ public class MateriaController {
 	public ModelAndView Lista() {
 		ModelAndView modelView= new ModelAndView("listaDeMaterias");
 		modelView.addObject("listadoMaterias",materiaService.listar());
+		modelView.addObject("listadoDocentes",docenteService.mostrarDocentes());
+		modelView.addObject("listadoCarreras",carreraService.MostrarCarreras());
 		return modelView;
 	}
 	@PostMapping("/guardarMateria")
@@ -72,8 +74,10 @@ public class MateriaController {
 	@GetMapping("/modificarMateria/{codigo}")
 	public ModelAndView modificarMateria(@PathVariable(name="codigo") Long codigo) {
 		MateriaDTO materia = materiaService.obtenerPorId(codigo);
-		ModelAndView modelView = new ModelAndView("formCarrera");
+		ModelAndView modelView = new ModelAndView("formMateria");
 		modelView.addObject("nuevaMateria",materia);
+		modelView.addObject("listadoDocentes",docenteService.mostrarDocentes());
+		modelView.addObject("listadoCarreras",carreraService.MostrarCarreras());
 		modelView.addObject("flag",true);
 		return modelView;
 	}
