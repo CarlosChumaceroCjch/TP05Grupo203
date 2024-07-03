@@ -16,33 +16,32 @@
 		<form data-th-object="${nuevaCarrera}"
 			data-th-Action="${flag}?@{/modificarCarrera}:@{/guardarCarrera}" method="post">
 			<div class="col-md-4">
-				<label for="codigo" class="form-label">Codigo</label> <input
-					type="text" class="form-control" id="codigo"
+				<label for="codigo" class="form-label">Codigo</label> <input required type="text" class="form-control" id="codigo"
 					data-th-field="*{cod}" data-th-readonly=${flag}>
 			</div>
 
 			<div class="col-md-4">
-				<label for="nombre" class="form-label">Nombre Carrera</label> <input
+				<label for="nombre" class="form-label">Nombre Carrera</label> <input required
 					type="text" class="form-control" id="nombre"
 					data-th-field="*{nombre}">
 			</div>
 
 			<div class="col-md-4">
-				<label for="cantidad" class="form-label">Cantidad de años</label> <input
+				<label for="cantidad" class="form-label">Cantidad de años</label> <input required
 					type="number" class="form-control" id="cantidad"
 					data-th-field="*{cantAnios}">
 			</div>
-			<!-- Listado de amterias padre -->
+			<!-- Listado de materias padre -->
 			<div class="col-md-4">
 	            <label class="form-label" for ="materias">Materias</label>
-	            <select id="materias" data-th-field="*{materias}" class="form-control" required multiple><br>
+	            <select required id="materias" data-th-field="*{materias}" class="form-control" required multiple><br>
 	                <option value="">Seleccionar materia</option>
 	                <option data-th-each="materia : ${Materias}" data-th-value="${materia.codigo}" data-th-text="${materia.nombre}"></option>
 	            </select>
 	        </div>
 
 			<div class="col-md-4">
-				<label class="form-label" for="status">Estado</label> <select
+				<label  class="form-label" for="status">Estado</label> <select required
 					data-th-field="*{status}" class="form-control" id="status"required>
 					<option data-th-value="true">True</option>
 					<option data-th-value="false">False</option>

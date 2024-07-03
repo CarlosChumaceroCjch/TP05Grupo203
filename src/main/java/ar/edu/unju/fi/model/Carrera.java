@@ -12,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
@@ -20,13 +21,16 @@ import lombok.Data;
 public class Carrera {
 	
 	@Id
-	
+	@NotNull
 	@Column(name="codigocarrera")
 	private String cod;
+	@NotNull
 	@Column(name="nombrecarrera")
 	private String nombre;
+	@NotNull
 	@Column(name="anioscarrera")
 	private Integer cantAnios;
+	@NotNull
 	@Column(name="statuscarrera")
 	private Boolean status;
 	@OneToMany(mappedBy="carrera",cascade = CascadeType.ALL)

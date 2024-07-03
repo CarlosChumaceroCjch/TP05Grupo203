@@ -14,6 +14,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,14 +27,19 @@ import lombok.NoArgsConstructor;
 public class Materia {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@NotNull
 	@Column(name="codigomateria")
     private Long codigo;
+	@NotNull
 	@Column(name="nombremateria")
     private String nombre;
+	@NotNull
 	@Column(name="cursomateria")
     private int curso;
+	@NotNull
 	@Column(name="horasmateria")
     private int cantHoras;
+	@NotNull
 	@Column(name="modalidadmateria")
     private String modalidad;
     @OneToOne(cascade=CascadeType.ALL)

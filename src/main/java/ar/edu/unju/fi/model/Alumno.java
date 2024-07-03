@@ -15,6 +15,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 import lombok.Data;
 
 
@@ -24,23 +27,33 @@ import lombok.Data;
 public class Alumno {
 	
 	@Id
-	
+	@NotNull
 	@Column(name="lu")
 	private String lu;
+	@NotNull
 	@Column(name="dni")
 	private Integer dni;
+	@NotNull
 	@Column(name="nombrealumno")
 	private String nombre;
+	@NotNull
 	@Column(name="apellidoalumno")
 	private String apellido;
+	@NotNull
+	@Email
 	@Column(name="emailalumno")
 	private String email;
+	@NotNull
 	@Column(name="telefonoalumno")
 	private String telefono;
+	@NotNull
+	@Past
 	@Column(name="nacimientoalumno")
 	private LocalDate fechaNacimiento;
+	@NotNull
 	@Column(name="domicilioalumno")
 	private String domicilio;
+	@NotNull
 	@Column(name="estadoalumno")
 	private Boolean estado;
 	//tp5Parte2
