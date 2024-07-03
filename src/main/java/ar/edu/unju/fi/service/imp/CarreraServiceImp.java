@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import ar.edu.unju.fi.DTO.CarreraDTO;
 import ar.edu.unju.fi.map.CarreraMapDTO;
 import ar.edu.unju.fi.model.Carrera;
+import ar.edu.unju.fi.model.Materia;
 import ar.edu.unju.fi.repository.CarreraRepository;
 import ar.edu.unju.fi.service.CarreraService;
 
@@ -21,11 +22,14 @@ public class CarreraServiceImp implements CarreraService{
 	@Autowired
 	CarreraMapDTO carreraMapDTO;
 	@Override
-	public void guardarCarrera(CarreraDTO c) {
+	public void guardarCarrera(CarreraDTO cDTO) {
 		// TODO Auto-generated method stub
 		//c.setStatus(true);
-		
-		carreraRepository.save(carreraMapDTO.convertirDTOaCarrera(c));
+		Carrera c=carreraMapDTO.convertirDTOaCarrera(cDTO);
+		for(Materia m:c.getMaterias()) {
+			m.setCarrera(c);
+		}
+		carreraRepository.save(c);
 	}
 
 	@Override
@@ -49,12 +53,14 @@ public class CarreraServiceImp implements CarreraService{
 	}	
 
 	@Override
-	public void modifcarCarrera(CarreraDTO c) {
+	public void modifcarCarrera(CarreraDTO cDTO) {
+		Carrera c=carreraMapDTO.convertirDTOaCarrera(cDTO);
 		List<Carrera>listadoCarreras = carreraRepository.findAll();
 		for (int i = 0; i < listadoCarreras.size(); i++) {
 			Carrera carrera = listadoCarreras.get(i);
 			if (carrera.getCod().equals(c.getCod())) {
-				carreraRepository.save(carreraMapDTO.convertirDTOaCarrera(c));
+				carreraRepository.save(c);
+				System.out.println("Entro bieny = "+ c.getMaterias().isEmpty());
 				break;
 			}
 		}

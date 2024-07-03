@@ -18,10 +18,12 @@ public interface CarreraMapDTO {
 	@Mapping (source="cantAnios", target="cantAnios")
 	@Mapping (source="cod", target="cod")
 	@Mapping (source="status", target="status")
+	@Mapping (source="alumnos", target="alumnos")
+	@Mapping (source="materias", target="materias")
 	CarreraDTO convertirCarreraACarreraDto (Carrera c);
 	
 
-	@Mapping(target = "materias", ignore = true)
+	
 	@InheritInverseConfiguration
 	Carrera convertirDTOaCarrera(CarreraDTO cdto);
 	

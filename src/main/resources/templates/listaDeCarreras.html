@@ -18,7 +18,7 @@
 				<p>Codigo:</p><p class="card-text" data-th-text="${carrera.cod}"></p>
 				<p>Cantidad de Años:</p><p class="card-text" data-th-text="${carrera.cantAnios}"></p>
 				<p>Estado:</p><p class="card-text" data-th-text="${carrera.status}"></p>
-
+				<p>Materias</p><p class="card-text" data-th-text="${carrera.materias.size()}"></p>
 				<a data-th-href="@{'/eliminarCarrera/'+${carrera.cod}}" class="btn btn-danger">Borrar</a> 
 				<a data-th-href="@{'/modificarCarrera/'+${carrera.cod}}" class="btn btn-warning">Modificar</a>
 			</div>

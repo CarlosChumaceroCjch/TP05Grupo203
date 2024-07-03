@@ -32,10 +32,18 @@
 					type="number" class="form-control" id="cantidad"
 					data-th-field="*{cantAnios}">
 			</div>
+			<!-- Listado de amterias padre -->
+			<div class="col-md-4">
+	            <label class="form-label" for ="materias">Materias</label>
+	            <select id="materias" data-th-field="*{materias}" class="form-control" required multiple><br>
+	                <option value="">Seleccionar materia</option>
+	                <option data-th-each="materia : ${Materias}" data-th-value="${materia.codigo}" data-th-text="${materia.nombre}"></option>
+	            </select>
+	        </div>
 
 			<div class="col-md-4">
 				<label class="form-label" for="status">Estado</label> <select
-					data-th-field="*{status}" class="form-control" required>
+					data-th-field="*{status}" class="form-control" id="status"required>
 					<option data-th-value="true">True</option>
 					<option data-th-value="false">False</option>
 
