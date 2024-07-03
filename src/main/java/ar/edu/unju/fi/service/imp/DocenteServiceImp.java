@@ -20,17 +20,17 @@ public class DocenteServiceImp implements DocenteService{
 	DocenteMapDTO carreraMapDTO;
 
 	@Override
-	public void guardarDocente(DocenteDTO docenteDTO) {
+	public void guardarDocente(Docente docente) {
 		// TODO Auto-generated method stub
-		docenteDTO.setEstado(true);
-		docenteRepository.save(carreraMapDTO.convertirDocenteDTOADocente(docenteDTO));
+		docente.setEstado(true);
+		docenteRepository.save(docente);
 		
 	}
 
 	@Override
-	public List<Docente> mostrarDocentes() {
+	public List<DocenteDTO> mostrarDocentesDTO() {
 		// TODO Auto-generated method stub
-		return docenteRepository.findDocenteByEstado(true);
+		return carreraMapDTO.convertirListaDocentesAListaDocentesDTO(docenteRepository.findDocenteByEstado(true));
 	}
 
 	@Override
@@ -48,15 +48,15 @@ public class DocenteServiceImp implements DocenteService{
 	}
 
 	@Override
-	public void modificarDocente(DocenteDTO docenteDTO) {
+	public void modificarDocente(Docente docente) {
 		// TODO Auto-generated method stub
 		List<Docente> docentes=docenteRepository.findAll();
-		docenteDTO.setEstado(true);
+		docente.setEstado(true);
 		for(int i=0;i<docentes.size();i++) {
 			Docente docent = docentes.get(i);
-			if(docent.getLegajo().equals(docenteDTO.getLegajo())) {
+			if(docent.getLegajo().equals(docente.getLegajo())) {
 				//docentes.set(i, docenteDTO);
-				docenteRepository.save(carreraMapDTO.convertirDocenteDTOADocente(docenteDTO));
+				docenteRepository.save(docente);
 				break;
 			}
 		}

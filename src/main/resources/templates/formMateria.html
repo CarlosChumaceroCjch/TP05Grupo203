@@ -12,52 +12,49 @@
 	<div data-th-replace="~{fragments/header :: navbar}"></div>
 	<div class="container">
 		<h1>FORMULARIO MATERIAS</h1>
-		<form th:action="${flag}?@{/modificarmateria}:@{/guardarMateria}" th:object="${nuevaMateria}" method="post">
+		<form th:action="${flag}?@{/modificarMateria}:@{/guardarMateria}" th:object="${nuevaMateria}" method="post">
 		            <div class="form-group">
 		                <label for="codigo">Código:</label>
-		                <input type="number" class="form-control" id="codigo" th:field="*{codigo}" th:readonly=${flag} required>
+		                <input required type="number" class="form-control" id="codigo" th:field="*{codigo}" data-th-readonly=${flag} >
+		                <p class="form-text text-danger" data-th-if="${#fields.hasErrors('codigo')}" data-th-errors="*{codigo}"></p>
 		            </div>
 		            <div class="form-group">
 		                <label for="nombre">Nombre:</label>
-		                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+		                <input required type="text" class="form-control" id="nombre" th:field="*{nombre}" >
+		                <p class="form-text text-danger" data-th-if="${#fields.hasErrors('nombre')}" data-th-errors="*{nombre}"></p>
 		            </div>
 		            <div class="form-group">
 		                <label for="curso">Curso:</label>
-		                <input type="number" class="form-control" id="curso" th:field="*{curso}" required>
+		                <input required type="number" class="form-control" id="curso" th:field="*{curso}" >
+		                <p class="form-text text-danger" data-th-if="${#fields.hasErrors('curso')}" data-th-errors="*{curso}"></p>
 		            </div>
 		            <div class="form-group">
 		                <label for="cantidadHoras">Cantidad de Horas:</label>
-		                <input type="number" class="form-control" id="cantidadHoras" th:field="*{cantHoras}" required>
+		                <input required type="number" class="form-control" id="cantidadHoras" th:field="*{cantHoras}" >
+		                <p class="form-text text-danger" data-th-if="${#fields.hasErrors('cantHoras')}" data-th-errors="*{cantHoras}"></p>
 		            </div>
 					<div class="col-md-4">
-						<label for="modalidad" class="form-label">Modalidad</label> <select
-							id="modalidad" class="form-select" data-th-field="*{modalidad}"
-							required>
+						<label for="modalidad" class="form-label">Modalidad</label> <select	required
+							id="modalidad" class="form-select" data-th-field="*{modalidad}">
 							<option value="">Seleccione Modalidad</option>
 							<option value="Presencial">Presencial</option>
 							<option value="Virtual">Virtual</option>
 						</select>
-					</div>
-					
-					<!-- <div class="form-group">
-		                <label for="modalidad">Modalidad:</label>
-		                <input type="text" class="form-control" id="modalidad" th:field="*{modalidad}" required>
-		            </div> -->
-		            
+					</div>            
 		            <div class="form-group">
 		                <label for="docente">Docente:</label>
-		                <select class ="form-select"id="docente" th:field="*{docente.legajo}" required>
+		                <select required class ="form-select"id="docente" th:field="*{docente}">
 		                    <option value="">Seleccionar Docente...</option>
 		                    <option th:each="docente : ${listadoDocentes}" th:value="${docente.legajo}" th:text="${docente.nombre} + ' ' + ${docente.apellido}"></option>
 		                </select>
 		            </div>
 		            <div class="form-group">
 		                <label for="carrera">Carrera:</label>
-		                <select class="form-select" id="carrera" th:field="*{carrera.cod}" >
+		                <select class="form-select" id="carrera" th:field="*{carrera}" th:readonly=${flag}>
 		                	<option value="">Seleccionar Carrera...</option>
 		                    <option th:each="carrera : ${listadoCarreras}" th:value="${carrera.cod}" th:text="${carrera.nombre}"></option>
 		                </select>
-		            </div>
+		           </div> 
 					<div class="col-md-4">
 						<label class="form-label" for="status">Estado</label> <select
 							data-th-field="*{estado}" class="form-control" required>

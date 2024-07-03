@@ -11,9 +11,9 @@ import ar.edu.unju.fi.DTO.MateriaDTO;
 
 @Service
 public interface MateriaService {
-    List<Materia> listar();
-    void guardar(MateriaDTO materiaDTO);
+    List<MateriaDTO> listar();
+    void guardar(Materia materia);
     MateriaDTO obtenerPorId(Long codigo);
-    public void modificarMateria(MateriaDTO m);
+    public void modificarMateria(Materia m);
     void eliminar(Long codigo);
 }

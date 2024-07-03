@@ -2,6 +2,7 @@ package ar.edu.unju.fi.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unju.fi.DTO.DocenteDTO;
 import ar.edu.unju.fi.model.Docente;
 import ar.edu.unju.fi.service.DocenteService;
+import jakarta.validation.Valid;
 
 @Controller
 public class DocenteController {
@@ -33,13 +35,27 @@ public class DocenteController {
 	
 	
 	@PostMapping("/guardarDocente")
-	public ModelAndView saveDocente(@ModelAttribute("nuevoDocente") DocenteDTO guardarDocente) {
-		//guardar
-		docenteService.guardarDocente(guardarDocente);
-		
-		//mostrar listado
-	    ModelAndView formD = new ModelAndView("listaDeDocentes");
-		formD.addObject("listadoDocentes",docenteService.mostrarDocentes());
+	public ModelAndView saveDocente(@Valid @ModelAttribute("nuevoDocente") Docente guardarDocente,BindingResult resultado) {
+		ModelAndView formD = new ModelAndView("listaDeDocentes");
+		try {
+			if(resultado.hasErrors()) {
+				formD.setViewName("formDocente");
+				System.out.println("fallo");
+			}else {
+				docenteService.guardarDocente(guardarDocente);
+				System.out.println("Docente guardado correctamente");	
+			}
+
+
+		}catch(Exception e)
+		{
+			boolean errors = true;
+			formD.addObject("errors", errors);
+			formD.addObject("cargaDocenteErrorMessage", " Error al Cargar en la BD " + e.getMessage());
+			System.out.println(e.getMessage());
+		}
+
+		formD.addObject("listadoDocentes", docenteService.mostrarDocentesDTO());
 		return formD;
 	}
 	
@@ -50,7 +66,7 @@ public class DocenteController {
 		
 		//mostrar nueva lista
 		ModelAndView formD = new ModelAndView("listaDeDocentes");
-		formD.addObject("listadoDocentes", docenteService.mostrarDocentes());	
+		formD.addObject("listadoDocentes", docenteService.mostrarDocentesDTO());	
 		
 		return formD;		
 		}
@@ -68,14 +84,22 @@ public class DocenteController {
 		}
 	
 	@PostMapping("/modificarDocente")
-	public ModelAndView updateDocente(@ModelAttribute("nuevoDocente") DocenteDTO docenteModificado) {
-					
-		//guardar
-		docenteService.modificarDocente(docenteModificado);
-		
-		//mostrar el listado
-		ModelAndView formD = new ModelAndView("listaDeDocentes");
-		formD.addObject("listadoDocentes", docenteService.mostrarDocentes());	
+	public ModelAndView updateDocente(@Valid @ModelAttribute("nuevoDocente") Docente docenteModificado,BindingResult resultado) {
+		ModelAndView formD = new ModelAndView();
+		try {
+			if (resultado.hasErrors()) {
+				formD.setViewName("formDocente");
+			} else {
+				docenteService.modificarDocente(docenteModificado);
+				formD.addObject("listadoDocentes", docenteService.mostrarDocentesDTO());
+			}
+		}catch(Exception e)
+		{
+			boolean errors = true;
+			formD.addObject("errors", errors);
+			formD.addObject("cargaDocenteErrorMessage", " Error al Cargar en la BD " + e.getMessage());
+			System.out.println(e.getMessage());
+		}	
 		
 		return formD;		
 	}
@@ -83,7 +107,7 @@ public class DocenteController {
 	@GetMapping("/listaDeDocentes")
 	public ModelAndView Lista() {
 		ModelAndView formD= new ModelAndView("listaDeDocentes");
-		formD.addObject("listadoDocentes",docenteService.mostrarDocentes());
+		formD.addObject("listadoDocentes",docenteService.mostrarDocentesDTO());
 		return formD;
 	}
 

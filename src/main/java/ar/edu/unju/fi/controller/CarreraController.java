@@ -2,6 +2,7 @@ package ar.edu.unju.fi.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ import ar.edu.unju.fi.DTO.CarreraDTO;
 import ar.edu.unju.fi.model.Carrera;
 import ar.edu.unju.fi.service.CarreraService;
 import ar.edu.unju.fi.service.MateriaService;
+import jakarta.validation.Valid;
 
 @Controller
 public class CarreraController {
@@ -48,10 +50,29 @@ public class CarreraController {
 	
 	
 	@PostMapping("/guardarCarrera")
-	public ModelAndView saveCarrera(@ModelAttribute("nuevaCarrera") CarreraDTO cDTO) {
-		carreraService.guardarCarrera(cDTO);
-		ModelAndView modelView= new ModelAndView("listaDeCarreras");
-		modelView.addObject("listadoCarreras",carreraService.MostrarCarreras());
+	public ModelAndView saveCarrera(@Valid @ModelAttribute("nuevaCarrera") Carrera c,BindingResult resultado) {
+		ModelAndView modelView= new ModelAndView();
+		try {
+			if(resultado.hasErrors()) {
+				modelView.setViewName("formCarrera");
+				modelView.addObject("materias",materiaService.listar());
+			}
+			else
+			{
+				carreraService.guardarCarrera(c);
+				System.out.println("Carrera guardada correctamente");
+			}
+		}catch(Exception e) {
+			modelView.addObject("errors", true);
+			modelView.addObject("cargaCarreraErrorMessage", "Error al cargar en la BD" + e.getMessage());
+			System.out.println(e.getMessage());
+		}
+		if (!resultado.hasErrors()) {
+			modelView.setViewName("listaDeCarreras");
+			modelView.addObject("materias",materiaService.listar());
+			modelView.addObject("listadoCarreras",carreraService.MostrarCarreras());
+		}
+		
 		return modelView;
 		
 	}
@@ -77,10 +98,28 @@ public class CarreraController {
 	}
 	
 	@PostMapping("/modificarCarrera")
-	public ModelAndView modifcarCarrera(@ModelAttribute("nuevaCarrera") CarreraDTO cMod)
-	{	carreraService.modifcarCarrera(cMod);
-		ModelAndView modelView = new ModelAndView("listaDeCarreras");
-		modelView.addObject("listadoCarreras",carreraService.MostrarCarreras());
+	public ModelAndView modifcarCarrera(@Valid @ModelAttribute("nuevaCarrera") Carrera cMod,BindingResult resultado)
+	{	
+		ModelAndView modelView = new ModelAndView();
+		try {
+			if (resultado.hasErrors()) {
+				modelView.setViewName("formCarrera");
+				modelView.addObject("materias",materiaService.listar());
+			}
+			else {
+				carreraService.modifcarCarrera(cMod);
+				System.out.println("Carrera Modificada Correctemante");
+			}
+			
+		}catch(Exception e) {
+			modelView.addObject("errors", true);
+			modelView.addObject("ModificacionCarreraErrorMessage", "Error al cargar en la BD" + e.getMessage());
+			System.out.println(e.getMessage());
+		}
+		if(!resultado.hasErrors()) {
+			modelView.setViewName("listDeCarreras");
+			modelView.addObject("listadoCarreras",carreraService.MostrarCarreras());
+		}
 		return modelView;
 		
 	}
