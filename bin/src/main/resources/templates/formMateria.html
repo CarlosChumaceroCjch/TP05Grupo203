@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet"
+	data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+<title>Formulario Materias</title>
+</head>
+<body>
+    <!-- Header -->
+	<div data-th-replace="~{fragments/header :: navbar}"></div>
+	<div class="container">
+		<h1>FORMULARIO MATERIAS</h1>
+		<form th:action="${flag}?@{/modificarmateria}:@{/guardarMateria}" th:object="${nuevaMateria}" method="post">
+		            <div class="form-group">
+		                <label for="codigo">Código:</label>
+		                <input type="number" class="form-control" id="codigo" th:field="*{codigo}" th:readonly=${flag} required>
+		            </div>
+		            <div class="form-group">
+		                <label for="nombre">Nombre:</label>
+		                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+		            </div>
+		            <div class="form-group">
+		                <label for="curso">Curso:</label>
+		                <input type="number" class="form-control" id="curso" th:field="*{curso}" required>
+		            </div>
+		            <div class="form-group">
+		                <label for="cantidadHoras">Cantidad de Horas:</label>
+		                <input type="number" class="form-control" id="cantidadHoras" th:field="*{cantHoras}" required>
+		            </div>
+					<div class="col-md-4">
+						<label for="modalidad" class="form-label">Modalidad</label> <select
+							id="modalidad" class="form-select" data-th-field="*{modalidad}"
+							required>
+							<option value="">Seleccione Modalidad</option>
+							<option value="Presencial">Presencial</option>
+							<option value="Virtual">Virtual</option>
+						</select>
+					</div>
+					
+					<!-- <div class="form-group">
+		                <label for="modalidad">Modalidad:</label>
+		                <input type="text" class="form-control" id="modalidad" th:field="*{modalidad}" required>
+		            </div> -->
+		            
+		            <div class="form-group">
+		                <label for="docente">Docente:</label>
+		                <select class ="form-select"id="docente" th:field="*{docente.legajo}" required>
+		                    <option value="">Seleccionar Docente...</option>
+		                    <option th:each="docente : ${listadoDocentes}" th:value="${docente.legajo}" th:text="${docente.nombre} + ' ' + ${docente.apellido}"></option>
+		                </select>
+		            </div>
+		            <div class="form-group">
+		                <label for="carrera">Carrera:</label>
+		                <select class="form-select" id="carrera" th:field="*{carrera.cod}" required>
+		                	<option value="">Seleccionar Carrera...</option>
+		                    <option th:each="carrera : ${listadoCarreras}" th:value="${carrera.cod}" th:text="${carrera.nombre}"></option>
+		                </select>
+		            </div>
+					<div class="col-md-4">
+						<label class="form-label" for="status">Estado</label> <select
+							data-th-field="*{estado}" class="form-control" required>
+							<option data-th-value="true">True</option>
+							<option data-th-value="false">False</option>
+		
+						</select>
+					</div>
+			<button type="submit" class="btn btn-primary">Guardar</button>
+		        </form>
+				</div>
+					
+					<footer data-th-replace="~{fragments/footer :: footer}">
+					</footer> 
+					<script
+						data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+				</body>
+				</html>

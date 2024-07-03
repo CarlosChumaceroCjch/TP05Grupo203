@@ -21,25 +21,26 @@ public class AlumnoServiceImp implements AlumnoService{
 	AlumnoMapDTO alumnoMapDTO;
 	
 	@Override
-	public void guardarAlumno(AlumnoDTO alumno) {
+	public void guardarAlumno(Alumno alumno) {
 		// TODO Auto-generated method stub
-		alumnoRepository.save(alumnoMapDTO.convertirDTOaAlumno(alumno));
+		alumno.setEstado(true);
+		alumnoRepository.save(alumno);
 	}
 
 	@Override
-	public List<Alumno> mostrarAlumnos() {
+	public List<AlumnoDTO> mostrarAlumnos() {
 		// TODO Auto-generated method stub
-		return alumnoRepository.findAlumnoByEstado(true);
+		return alumnoMapDTO.convertirListaAlumnosAListaAlumnosDTO(alumnoRepository.findAlumnoByEstado(true));
 	}
 
 	@Override
-	public void modificarAlumno(AlumnoDTO alumno) {
+	public void modificarAlumno(Alumno alumno) {
 		// TODO Auto-generated method stub
 		List<Alumno> alumnos = alumnoRepository.findAll();
 		for (int i=0; i<alumnos.size(); i++) {
 			Alumno alum = alumnos.get(i);
 			if(alum.getLu().equals(alumno.getLu())) {
-				alumnoRepository.save(alumnoMapDTO.convertirDTOaAlumno(alumno));
+				alumnoRepository.save(alumno);
 				break;
 			}
 		}

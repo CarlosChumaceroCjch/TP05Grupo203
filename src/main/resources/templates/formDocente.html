@@ -15,30 +15,34 @@
 		<form data-th-object="${nuevoDocente}" data-th-action="${band}?@{/modificarDocente}:@{/guardarDocente}"
 				method="post">
 			<div class="col-md-4">
-				<label for="legajo" class="form-label">Legajo</label> <input
+				<label for="legajo" class="form-label">Legajo</label> <input required
 					type="text" class="form-control" id="legajo" data-th-field="*{legajo}" data-th-readonly=${band}>
 			</div>
 			<div class="col-md-4">
-				<label for="nombre" class="form-label">Nombre del Docente</label> <input
+				<label for="nombre" class="form-label">Nombre del Docente</label> <input required
 					type="text" class="form-control" id="nombre" data-th-field="*{nombre}">
+				<p class="form-text text-danger" data-th-if="${#fields.hasErrors('nombre')}" data-th-errors="*{nombre}"></p>
 			</div>
 			<div class="col-md-4">
 				
 				<label for="apellido" class="form-label">Apellido del Docente</label> 
-				<input
+				<input required
 					type="text" class="form-control" id="apellido" data-th-field="*{apellido}">
+				<p class="form-text text-danger" data-th-if="${#fields.hasErrors('apellido')}" data-th-errors="*{apellido}"></p>	
 			</div>
 			<div class="col-md-4">
 				
 				<label for="email" class="form-label">Email</label> 
-				<input
+				<input				required
 					type="email" class="form-control" id="email" data-th-field="*{email}">
+				<p class="form-text text-danger" data-th-if="${#fields.hasErrors('email')}" data-th-errors="*{email}"></p>	
 			</div>
 			<div class="col-md-4">
 				
 				<label for="tel" class="form-label">Telefono</label> 
-				<input
+				<input				required
 					type="tel" class="form-control" id="tel" data-th-field="*{telefono}">
+				<p class="form-text text-danger" data-th-if="${#fields.hasErrors('telefono')}" data-th-errors="*{telefono}"></p>	
 			</div>
 
 			<button type="submit" class="btn btn-primary">Guardar</button>

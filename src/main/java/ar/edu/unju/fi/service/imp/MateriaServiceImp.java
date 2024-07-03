@@ -20,8 +20,8 @@ public class MateriaServiceImp implements MateriaService{
     MateriaMapDTO materiaMapDTO;
 
     @Override
-    public List<Materia> listar() {
-    	return materiaRepository.findMateriaByEstado(true);
+    public List<MateriaDTO> listar() {
+    	return materiaMapDTO.convertirListaMateriasAListaMateriasDTO(materiaRepository.findMateriaByEstado(true));
 		/*
 		 * List<Materia> materias = materiaRepository.findAll(); return
 		 * materias.stream() .map(MateriaMapDTO::toMateriaDTO)
@@ -30,12 +30,8 @@ public class MateriaServiceImp implements MateriaService{
     }
 
     @Override
-    public void guardar(MateriaDTO materiaDTO) {
-    	materiaRepository.save(materiaMapDTO.convertirMateriaDTOAMateria(materiaDTO));
-		/*
-		 * Materia materia = materiaMapDTO.toMateria(materiaDTO); materia =
-		 * materiaRepository.save(materia); return materiaMapper.toMateriaDTO(materia);
-		 */
+    public void guardar(Materia materia) {
+    	materiaRepository.save(materia);
     }
 
     @Override
@@ -59,12 +55,12 @@ public class MateriaServiceImp implements MateriaService{
     }
 
 	@Override
-	public void modificarMateria(MateriaDTO mDTO) {
+	public void modificarMateria(Materia mi) {
 		List<Materia>listadoMaterias = materiaRepository.findAll();
     	for (Materia m: listadoMaterias) {
-    		if(m.getCodigo().equals(mDTO.getCodigo())) {
+    		if(m.getCodigo().equals(mi.getCodigo())) {
     			m.setEstado(false);
-    			materiaRepository.save(materiaMapDTO.convertirMateriaDTOAMateria(mDTO));
+    			materiaRepository.save(mi);
     			break;
     		}
     	}

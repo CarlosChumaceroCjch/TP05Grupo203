@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 
 import ar.edu.unju.fi.model.Alumno;
 import ar.edu.unju.fi.model.Materia;
+import jakarta.validation.constraints.Min;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Data
 @Getter

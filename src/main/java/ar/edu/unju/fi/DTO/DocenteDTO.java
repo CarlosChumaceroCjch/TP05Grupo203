@@ -2,6 +2,9 @@ package ar.edu.unju.fi.DTO;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,10 +15,10 @@ import lombok.Setter;
 @Component
 public class DocenteDTO {
 	private String legajo;
-	private String nombre; 
+	private String nombre;
 	private String apellido;
 	private String email;
-	private int telefono;
+	private String telefono;
 	private boolean estado;
 
 }

@@ -38,6 +38,9 @@
 				</tr>
 			</tbody>
 		</table>
+	<div class="alert alert-danger" role="alert" data-th-if="${errors}" >
+		<p data-th-text="${cargaDocenteErrorMessage}"></p>
+		</div>
 	</div>
 	<footer data-th-replace="~{fragments/footer :: footer}">
 	</footer>

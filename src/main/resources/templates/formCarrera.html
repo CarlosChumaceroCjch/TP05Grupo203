@@ -19,31 +19,34 @@
 				<label for="cod" class="form-label">Codigo</label> <input
 					type="text" class="form-control" id="cod"
 					data-th-field="*{cod}" data-th-readonly=${flag}>
+				<p class="form-text text-danger" data-th-if="${#fields.hasErrors('cod')}" data-th-errors="*{cod}"></p>
 			</div>
 
 			<div class="col-md-4">
-				<label for="nombre" class="form-label">Nombre Carrera</label> <input
+				<label for="nombre" class="form-label">Nombre Carrera</label> <input required
 					type="text" class="form-control" id="nombre"
 					data-th-field="*{nombre}">
+				<p class="form-text text-danger" data-th-if="${#fields.hasErrors('nombre')}" data-th-errors="*{nombre}"></p>
 			</div>
 
 			<div class="col-md-4">
-				<label for="cantidad" class="form-label">Cantidad de años</label> <input
+				<label for="cantidad" class="form-label">Cantidad de años</label> <input required
 					type="number" class="form-control" id="cantidad"
 					data-th-field="*{cantAnios}">
+				<p class="form-text text-danger" data-th-if="${#fields.hasErrors('cantAnios')}" data-th-errors="*{cantAnios}"></p>
 			</div>
-			<!-- Listado de amterias padre -->
+			<!-- Listado de materias padre -->
 			<div class="col-md-4">
 	            <label class="form-label" for ="materias">Materias</label>
+
 	            <select id="materias" th:field="*{materias}" class="form-control" required multiple>
-	                <option value="">Seleccionar materia</option>
 	                <option th:each="materia : ${materias}" data-th-value="${materia.codigo}" data-th-text="${materia.nombre}"></option>
 	            </select>
 	        </div>
 
 			<div class="col-md-4">
-				<label class="form-label" for="status">Estado</label> <select
-					data-th-field="*{status}" class="form-control" id="status"required>
+				<label  class="form-label" for="status">Estado</label> <select required
+					data-th-field="*{status}" class="form-control" id="status">
 					<option data-th-value="true">True</option>
 					<option data-th-value="false">False</option>
 

@@ -23,10 +23,9 @@ public class CarreraServiceImp implements CarreraService{
 	@Autowired
 	CarreraMapDTO carreraMapDTO;
 	@Override
-	public void guardarCarrera(CarreraDTO cDTO) {
+	public void guardarCarrera(Carrera c) {
 		// TODO Auto-generated method stub
 		//c.setStatus(true);
-		Carrera c=carreraMapDTO.convertirDTOaCarrera(cDTO);
 		for(Materia m:c.getMaterias()) {
 			m.setCarrera(c);
 		}
@@ -54,12 +53,11 @@ public class CarreraServiceImp implements CarreraService{
 	}	
 
 	@Override
-	public void modifcarCarrera(CarreraDTO cDTO) {
+	public void modifcarCarrera(Carrera c) {
 			List<Carrera> listadoCarreras = carreraRepository.findAll();
 			for (int i = 0; i < listadoCarreras.size(); i++) {
 				Carrera carrera = listadoCarreras.get(i);
-				if (carrera.getCod().equals(cDTO.getCod())) {
-					Carrera c= carreraMapDTO.convertirDTOaCarrera(cDTO);
+				if (carrera.getCod().equals(c.getCod())) {
 					for(Materia m:c.getMaterias()) {
 						m.setCarrera(c);
 					}

@@ -10,9 +10,9 @@ import ar.edu.unju.fi.model.Carrera;
 @Service
 public interface CarreraService {
 	
-	public void guardarCarrera(CarreraDTO c);
+	public void guardarCarrera(Carrera c);
 	public List<Carrera> MostrarCarreras();
 	public void eliminarCarrera(String codigo);
-	public void modifcarCarrera(CarreraDTO c);
+	public void modifcarCarrera(Carrera c);
 	public Carrera buscarCarrera(String codigo);
 }
