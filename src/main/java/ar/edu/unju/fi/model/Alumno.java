@@ -49,7 +49,7 @@ public class Alumno{
 	@Past
 	@NotNull
 	private LocalDate fechaNacimiento;
-	@Size(min=8, max=15,message="longitud del Domicilio no valida")
+	@Size(min=8, max=30,message="longitud del Domicilio no valida")
 	private String domicilio;
 	private Boolean estado;
 	//tp5Parte2

@@ -100,7 +100,7 @@ public class CarreraController {
 	@PostMapping("/modificarCarrera")
 	public ModelAndView modifcarCarrera(@Valid @ModelAttribute("nuevaCarrera") Carrera cMod,BindingResult resultado)
 	{	
-		ModelAndView modelView = new ModelAndView();
+		ModelAndView modelView = new ModelAndView("ListaDeCarreras");
 		try {
 			if (resultado.hasErrors()) {
 				modelView.setViewName("formCarrera");
@@ -117,7 +117,7 @@ public class CarreraController {
 			System.out.println(e.getMessage());
 		}
 		if(!resultado.hasErrors()) {
-			modelView.setViewName("listDeCarreras");
+			modelView.setViewName("listaDeCarreras");
 			modelView.addObject("listadoCarreras",carreraService.MostrarCarreras());
 		}
 		return modelView;

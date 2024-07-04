@@ -22,6 +22,7 @@ public interface AlumnoMapDTO {
 	@Mapping (source="domicilio", target="domicilio")
 	@Mapping (source="estado", target="estado")
 	@Mapping (source="carrera", target="carrera")
+	@Mapping (source="materias",target="materias")
 	AlumnoDTO convertirAlumnoAAlumnoDto (Alumno alumno);
 	
 
