@@ -1,5 +1,7 @@
 package ar.edu.unju.fi.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -10,16 +12,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.DTO.MateriaDTO;
+import ar.edu.unju.fi.model.Alumno;
 import ar.edu.unju.fi.model.Materia;
+import ar.edu.unju.fi.service.AlumnoService;
 import ar.edu.unju.fi.service.CarreraService;
 import ar.edu.unju.fi.service.DocenteService;
 import ar.edu.unju.fi.service.MateriaService;
+import ch.qos.logback.core.model.Model;
 import jakarta.validation.Valid;
 
 @Controller
 public class MateriaController {
 	@Autowired
 	MateriaDTO nuevaMateriaDTO;
+	@Autowired
+	AlumnoService alumnoService;
 	@Autowired
 	MateriaService materiaService;
 	@Autowired
@@ -115,4 +122,12 @@ public class MateriaController {
 		return modelView;
 		
 	}
+	@GetMapping("/filtrarAlumnos/{codigo}")
+	public ModelAndView filtrarAlumnosPorMateria(@PathVariable Long codigo) {
+		ModelAndView modelView = new ModelAndView("listaDeAlumnos");
+        MateriaDTO materia = materiaService.obtenerPorId(codigo);
+        List<Alumno> alumnosDeMateria = materia.getAlumnos();
+        modelView.addObject("listadoAlumnos", alumnosDeMateria);
+        return modelView; // Este debe ser el nombre de la plantilla Thymeleaf
+    }
 }

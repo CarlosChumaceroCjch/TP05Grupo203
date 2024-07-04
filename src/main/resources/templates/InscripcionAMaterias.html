@@ -12,52 +12,18 @@
 	
 	<main class="container">
 		<h1> Inscripción a Materias </h1>
-		<form data-th-object="" data-th-action=""  method="post">
+		<form data-th-object="${nuevoAlumno}" data-th-action="@{/guardarInscripcion}"  method="post">
 			<div class="mb-3 col-sm-6">
-    			<label for="lu" class="form-label">Libreta Universitaria (LU)</label>
-    			<input type="number" class="form-control" id="lu" data-th-field="">
+    			<label for="lu" class="form-label">Ingrese a su Libreta Universitaria (LU)</label>
+    			<input type="number" class="form-control" id="lu" data-th-field="*{lu}">
   			</div>
-  			<div class="mb-3 col-sm-6">
-    			<label for="dni" class="form-label">DNI</label>
-    			<input type="number" class="form-control" id="dni" data-th-field="">
-  			</div>
-  			<div class="mb-3 col-sm-6">
-    			<label for="nombre" class="form-label">Nombre</label>
-    			<input type="text" class="form-control" id="nombre" data-th-field="">
-  			</div>
-  			<div class="mb-3 col-sm-6">
-    			<label for="apellido" class="form-label">Apellido</label>
-    			<input type="text" class="form-control" id="apellido" data-th-field="">
-  			</div>
-  			<div class="mb-3 col-sm-6">
-    			<label for="email" class="form-label">Email</label>
-    			<input type="email" class="form-control" id="email" data-th-field="">
-  			</div>
-  			<div class="mb-3 col-sm-6">
-    			<label for="telefono" class="form-label">Telefono</label>
-    			<input type="number" class="form-control" id="telefono" data-th-field="">
-  			</div>
-  			<div class="mb-3 col-sm-6">
-    			<label for="nacimiento" class="form-label">Fecha de nacimiento</label>
-    			<input type="date" class="form-control" id="nacimiento" data-th-field="">
-  			</div>
-  			<div class="mb-3 col-sm-6">
-    			<label for="domicilio" class="form-label">Domicilio</label>
-    			<input type="text" class="form-control" id="domicilio" data-th-field="">
-  			</div>
-  			<div class="mb-3 col-sm-6">
-  				<label for="estado" class="form-label" >Materia</label>
-  				<select data-th-field="" class="form-control" required> <!-- data-th:each="m : ${listadoMaterias}" -->
-					<option></option> <!-- data-th-value="${m.nombre}" data-th:text="${m.nombre}"-->
+  			<div data-th-object="${nuevaMateria}" class="mb-3 col-sm-6">
+  				<label for="materia" class="form-label" >Materia que se desea inscribir</label>
+  				<select id ="materia" data-th-field="*{codigo}" class="form-control" required> <!-- data-th:each="m : ${listadoMaterias}" -->
+					<option value="">Seleccionar Carrera</option>
+					<option data-th-each="m : ${listadoMaterias}" data-th-value="${m.codigo}" data-th-text="${m.nombre}"></option> <!-- data-th-value="${m.nombre}" data-th:text="${m.nombre}"-->
 				</select>
   			</div>
-  			<!--<div class="mb-3 col-sm-6">
-				<label for="estado" class="form-label" >Estado</label>
-				<select data-th-field="*{estado}" class="form-control" required>
-					<option data-th-value="true">True</option>
-					<option data-th-value="false">False</option>
-				</select>
-			</div>-->
   			<button type="submit" class="btn btn-primary">Inscribirse</button>
 		</form>
 	</main>

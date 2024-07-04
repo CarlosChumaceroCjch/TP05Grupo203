@@ -85,7 +85,7 @@ public class DocenteController {
 	
 	@PostMapping("/modificarDocente")
 	public ModelAndView updateDocente(@Valid @ModelAttribute("nuevoDocente") Docente docenteModificado,BindingResult resultado) {
-		ModelAndView formD = new ModelAndView();
+		ModelAndView formD = new ModelAndView("listaDeDocentes");
 		try {
 			if (resultado.hasErrors()) {
 				formD.setViewName("formDocente");

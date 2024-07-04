@@ -21,6 +21,7 @@
 				<p>Materias</p><p class="card-text" data-th-text="${carrera.materias.size()}"></p>
 				<a data-th-href="@{'/eliminarCarrera/'+${carrera.cod}}" class="btn btn-danger">Borrar</a> 
 				<a data-th-href="@{'/modificarCarrera/'+${carrera.cod}}" class="btn btn-warning">Modificar</a>
+				<a data-th-href="@{'/filtrarAlumnosCar/'+${carrera.cod}}" class="btn btn-danger">Filtrar Alumnos</a>
 			</div>
 			</div>
 		</div>

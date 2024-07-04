@@ -20,6 +20,7 @@
 					<th>Cantidad Horas</th>
 					<th>Modalidad</th>
 					<th>Docente</th>
+					<th>Carrera</th>
 					<th>Estado</th>
 					<th>Acciones</th>
 				</tr>
@@ -32,11 +33,13 @@
 					<td th:text="${materia.cantHoras}"></td>
 					<td th:text="${materia.modalidad}"></td>
 					<td th:text="${materia.docente.nombre}"></td>
+					<td th:text="${materia.carrera}==null?'':${materia.carrera.nombre}"></td>
 					<td th:text="${materia.estado}"></td>
-					<td><a th:href="@{'/modificarMateria/' + ${materia.codigo}}"
-						class="btn btn-primary">Editar</a> <a
-						th:href="@{'/eliminarMateria/' + ${materia.codigo}}"
-						class="btn btn-danger">Eliminar</a></td>
+					<td>
+						<a th:href="@{'/modificarMateria/' + ${materia.codigo}}"class="btn btn-primary">Editar</a>
+						<a th:href="@{'/eliminarMateria/' + ${materia.codigo}}"class="btn btn-danger">Eliminar</a>
+						<a data-th-href="@{'/filtrarAlumnos/'+${materia.codigo}}" class="btn btn-danger">Filtrar Alumnos</a>
+					</td>
 				</tr>
 			</tbody>
 		</table>
