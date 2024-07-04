@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -17,6 +18,7 @@ import lombok.Data;
 public class Docente{
 
 	@Id
+	@NotNull
 	private String legajo;
 	@Size(min = 3, max = 30, message = "Este campo debe tener entre 3 y 30 caracteres.")
 	@Pattern(regexp = "[a-z A-Z]*", message = "Este campo solo debe contener Letras.")
@@ -29,6 +31,7 @@ public class Docente{
 	@Size(min = 3, max = 15, message = "Este campo debe tener entre 3 y 15 caracteres.")
 	@Pattern(regexp = "[0-9]*", message = "Este campo solo debe contener numeros")
 	private String telefono;
+	@NotNull
 	private boolean estado;
 
 	

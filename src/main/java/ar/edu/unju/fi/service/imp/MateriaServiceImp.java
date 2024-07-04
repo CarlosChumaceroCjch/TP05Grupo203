@@ -5,14 +5,18 @@ import ar.edu.unju.fi.map.MateriaMapDTO;
 import ar.edu.unju.fi.model.Materia;
 import ar.edu.unju.fi.repository.MateriaRepository;
 import ar.edu.unju.fi.service.MateriaService;
+import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Service
 public class MateriaServiceImp implements MateriaService{
+	private static final Logger logger = LoggerFactory.getLogger(MateriaServiceImp.class);
 	@Autowired
     MateriaRepository materiaRepository;
 
@@ -21,48 +25,63 @@ public class MateriaServiceImp implements MateriaService{
 
     @Override
     public List<MateriaDTO> listar() {
-    	return materiaMapDTO.convertirListaMateriasAListaMateriasDTO(materiaRepository.findMateriaByEstado(true));
-		/*
-		 * List<Materia> materias = materiaRepository.findAll(); return
-		 * materias.stream() .map(MateriaMapDTO::toMateriaDTO)
-		 * .collect(Collectors.toList());
-		 */
+    	logger.info("Listando materias con estado verdadero");
+        List<MateriaDTO> materiasDTO = materiaMapDTO.convertirListaMateriasAListaMateriasDTO(materiaRepository.findMateriaByEstado(true));
+        logger.info("Materias listadas: {}", materiasDTO);
+        return materiasDTO;
     }
 
     @Override
     public void guardar(Materia materia) {
+    	logger.info("Guardando materia: {}", materia);
     	materiaRepository.save(materia);
     }
 
     @Override
     public MateriaDTO obtenerPorId(Long id) {
+    	logger.info("Obteniendo materia por ID: {}", id);
         Materia materia = materiaRepository.findById(id).orElse(null);
-        return materia != null ? materiaMapDTO.convertirMateriaAMateriaDTO(materia) : null;
+        MateriaDTO materiaDTO = materia != null ? materiaMapDTO.convertirMateriaAMateriaDTO(materia) : null;
+        logger.info("Materia obtenida: {}", materiaDTO);
+        return materiaDTO;
     }
 
     @Override
+    @Transactional
     public void eliminar(Long id) {
-    	List<Materia>listadoMaterias = materiaRepository.findAll();
-    	//Borrado logico
-    	for (Materia m: listadoMaterias) {
-    		if(m.getCodigo().equals(id)) {
-    			m.setEstado(false);
-    			materiaRepository.save(m);
-    			break;
-    		}
-    	}
-        //materiaRepository.deleteById(id);
+    	logger.info("Eliminando (borrado lógico) materia por ID: {}", id);
+        Materia materia = materiaRepository.findById(id).orElse(null);
+        if (materia != null) {
+            materia.setEstado(false);
+            materiaRepository.save(materia);
+            logger.info("Materia eliminada: {}", materia);
+        } else {
+            logger.warn("Materia no encontrada para el ID: {}", id);
+        }
     }
 
 	@Override
-	public void modificarMateria(Materia mi) {
-		List<Materia>listadoMaterias = materiaRepository.findAll();
-    	for (Materia m: listadoMaterias) {
-    		if(m.getCodigo().equals(mi.getCodigo())) {
-    			m.setEstado(false);
-    			materiaRepository.save(mi);
-    			break;
-    		}
-    	}
+	@Transactional
+	public void modificarMateria(Materia m) {
+		logger.info("Modificando materia: {}", m);
+        Materia materia = materiaRepository.findById(m.getCodigo()).orElse(null);
+        if (materia != null) {
+        	materia.setCodigo(m.getCodigo());
+        	materia.setNombre(m.getNombre());
+        	materia.setCurso(m.getCurso());
+        	materia.setCantHoras(m.getCantHoras());
+        	materia.setModalidad(m.getModalidad());
+            materia.setEstado(m.getEstado());
+            materia.setDocente(m.getDocente());
+            materia.setCarrera(m.getCarrera());
+            materia.setAlumnos(m.getAlumnos());
+            materiaRepository.save(materia);
+            logger.info("Materia modificada: {}", materia);
+        	
+        }else {
+            logger.warn("Materia no encontrada para el ID: {}", m.getCodigo());
+        }
+
 	}
+         
 }

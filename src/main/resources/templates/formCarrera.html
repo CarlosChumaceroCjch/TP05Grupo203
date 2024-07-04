@@ -18,21 +18,21 @@
 			<div class="col-md-4">
 				<label for="cod" class="form-label">Codigo</label> <input
 					type="text" class="form-control" id="cod"
-					data-th-field="*{cod}" data-th-readonly=${flag}>
+					data-th-field="*{cod}" data-th-readonly=${flag} placeholder="Ingres Codigo Carrera">
 				<p class="form-text text-danger" data-th-if="${#fields.hasErrors('cod')}" data-th-errors="*{cod}"></p>
 			</div>
 
 			<div class="col-md-4">
 				<label for="nombre" class="form-label">Nombre Carrera</label> <input required
 					type="text" class="form-control" id="nombre"
-					data-th-field="*{nombre}">
+					data-th-field="*{nombre}" placeholder="Ingrese Nombre de la carrera">
 				<p class="form-text text-danger" data-th-if="${#fields.hasErrors('nombre')}" data-th-errors="*{nombre}"></p>
 			</div>
 
 			<div class="col-md-4">
-				<label for="cantidad" class="form-label">Cantidad de años</label> <input required
+				<label for="cantidad" class="form-label">Duracion:</label> <input required
 					type="number" class="form-control" id="cantidad"
-					data-th-field="*{cantAnios}">
+					data-th-field="*{cantAnios}" placeholder="Ingrese años de duracion de la carrera">
 				<p class="form-text text-danger" data-th-if="${#fields.hasErrors('cantAnios')}" data-th-errors="*{cantAnios}"></p>
 			</div>
 			<!-- Listado de materias padre -->

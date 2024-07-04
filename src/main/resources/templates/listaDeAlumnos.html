@@ -15,6 +15,7 @@
 		<table class="table table-striped" >
 			<thead>
     			<tr>
+    				<th scope="col">Libreta Universitaria (LU)</th>
       				<th scope="col">DNI</th>
       				<th scope="col">Nombre</th>
       				<th scope="col">Apellido</th>
@@ -22,22 +23,20 @@
       				<th scope="col">Telefono</th>
       				<th scope="col">Fecha de Nacimiento</th>
       				<th scope="col">Domicilio</th>
-      				<th scope="col">Libreta Universitaria (LU)</th>
       				<th scope="col">Carrera</th>
-      				<th scope="col">Materias</th>
       				<th scope="col">Estado</th>
     			</tr>
   			</thead>
   			<tbody>
     			<tr data-th-each="a : ${listadoAlumnos}">
-      				<th data-th-text="${a.dni}"></th>
+    				<td data-th-text="${a.lu}"></td>
+      				<td data-th-text="${a.dni}"></td>
       				<td data-th-text="${a.nombre}"></td>
       				<td data-th-text="${a.apellido}"></td>
       				<td data-th-text="${a.email}"></td>
       				<td data-th-text="${a.telefono}"></td>
       				<td data-th-text="${a.fechaNacimiento}"></td>
       				<td data-th-text="${a.domicilio}"></td>
-      				<td data-th-text="${a.lu}"></td>
       				<td data-th-text="${a.carrera.nombre}"></td>
       				<td data-th-text="${a.estado}"></td>
       				<td>

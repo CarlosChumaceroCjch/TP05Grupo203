@@ -27,10 +27,10 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = {"carrera"})
 public class Materia{
 	
 	@Id
+	@NotNull
     private Long codigo;
 	@Size(min = 3, max = 30, message = "Este campo debe tener entre 3 y 30 caracteres.")
 	@Pattern(regexp = "[a-z A-Z]*", message = "Este campo solo debe contener Letras.")
@@ -44,10 +44,13 @@ public class Materia{
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="legajo",referencedColumnName="legajo")
     private Docente docente;
+    @NotNull
     private Boolean estado;
     //Tp5parte2
+    @ToString.Exclude
     @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Alumno> alumnos;
+    @ToString.Exclude
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="cod")
     private Carrera carrera;

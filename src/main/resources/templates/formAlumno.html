@@ -15,32 +15,32 @@
 		<form data-th-object="${nuevoAlumno}" data-th-action="${flag}?@{/modificarAlumno}:@{/guardarAlumno}"  method="post">
 			<div class="mb-3 col-sm-6">
     			<label for="lu" class="form-label">Libreta Universitaria (LU)</label>
-    			<input required type="number" class="form-control" id="lu" data-th-field="*{lu}" data-th-readonly=${flag}>
+    			<input required type="number" class="form-control" id="lu" data-th-field="*{lu}" data-th-readonly=${flag} placeholder="Ingrese su  Nro. libreta universitari">
     			<p class="form-text text-danger" data-th-if="${#fields.hasErrors('lu')}" data-th-errors="*{lu}"></p>
   			</div>
   			<div class="mb-3 col-sm-6">
     			<label for="dni" class="form-label">DNI</label>
-    			<input required type="number" class="form-control" id="dni" data-th-field="*{dni}">
+    			<input required type="number" class="form-control" id="dni" data-th-field="*{dni}" placeholder="Numero DNI">
     			<p class="form-text text-danger" data-th-if="${#fields.hasErrors('dni')}" data-th-errors="*{dni}"></p>
   			</div>
   			<div class="mb-3 col-sm-6">
     			<label for="nombre" class="form-label">Nombre</label>
-    			<input required type="text" class="form-control" id="nombre" data-th-field="*{nombre}">
+    			<input required type="text" class="form-control" id="nombre" data-th-field="*{nombre}" placeholder="Ingrese Su nombre">
     			<p class="form-text text-danger" data-th-if="${#fields.hasErrors('nombre')}" data-th-errors="*{nombre}"></p>
   			</div>
   			<div class="mb-3 col-sm-6">
     			<label for="apellido" class="form-label">Apellido</label>
-    			<input required type="text" class="form-control" id="apellido" data-th-field="*{apellido}">
+    			<input required type="text" class="form-control" id="apellido" data-th-field="*{apellido}" Ingrese su apellido>
     			<p class="form-text text-danger" data-th-if="${#fields.hasErrors('apellido')}" data-th-errors="*{apellido}"></p>
   			</div>
   			<div class="mb-3 col-sm-6">
     			<label for="email" class="form-label">Email</label>
-    			<input required type="email" class="form-control" id="email" data-th-field="*{email}">
+    			<input required type="email" class="form-control" id="email" data-th-field="*{email}" placeholder="example@mail.com">
     			<p class="form-text text-danger" data-th-if="${#fields.hasErrors('email')}" data-th-errors="*{email}"></p>
   			</div>
   			<div class="mb-3 col-sm-6">
     			<label for="telefono" class="form-label">Telefono</label>
-    			<input required type="number" class="form-control" id="telefono" data-th-field="*{telefono}">
+    			<input required type="number" class="form-control" id="telefono" data-th-field="*{telefono}" placeholder="xxxxxxxxxx">
     			<p class="form-text text-danger" data-th-if="${#fields.hasErrors('telefono')}" data-th-errors="*{telefono}"></p>
   			</div>
   			<div class="mb-3 col-sm-6">
@@ -50,7 +50,7 @@
   			</div>
   			<div class="mb-3 col-sm-6">
     			<label for="domicilio" class="form-label">Domicilio</label>
-    			<input required type="text" class="form-control" id="domicilio" data-th-field="*{domicilio}">
+    			<input required type="text" class="form-control" id="domicilio" data-th-field="*{domicilio}" placeholder="Ingrese su domicilio">
     			<p class="form-text text-danger" data-th-if="${#fields.hasErrors('domicilio')}" data-th-errors="*{domicilio}"></p>
   			</div>
 			<div class="form-group">

@@ -137,11 +137,11 @@ public class AlumnoController {
 	@PostMapping("/guardarInscripcion")
 	public ModelAndView formInscripcion(@ModelAttribute("nuevoAlumno")Alumno a,@ModelAttribute("nuevaMateria")Materia m) {
 		ModelAndView modelView=new ModelAndView("ListaDeAlumnos");
-		modelView.addObject("listadoAlumnos",alumnoService.mostrarAlumnos());
+
 		try {
 			if (alumnoService.buscarAlumno(a.getLu())!=null){
 				alumnoService.inscribirAlumno(alumnoService.buscarAlumno(a.getLu()), materiaService.obtenerPorId(m.getCodigo()));
-				System.out.println("Si guardo");
+				modelView.addObject("listadoAlumnos",alumnoService.mostrarAlumnos());
 			}
 		}
 		catch( Exception e){

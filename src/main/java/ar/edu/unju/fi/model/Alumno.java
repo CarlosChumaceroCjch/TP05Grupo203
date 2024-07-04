@@ -22,14 +22,17 @@ import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.ToString;
 
 
 @Data
 @Component
 @Entity
+@ToString(exclude={"carrera"})
 public class Alumno{
 
 	@Id
+	@NotNull
 	@Size(min=4, max=8,message="longitud de LU no valida")
 	private String lu;
 	@Min(value=10000000, message="Dni no valido")
@@ -51,6 +54,7 @@ public class Alumno{
 	private LocalDate fechaNacimiento;
 	@Size(min=8, max=30,message="longitud del Domicilio no valida")
 	private String domicilio;
+	@NotNull
 	private Boolean estado;
 	//tp5Parte2
 	@ManyToMany(mappedBy="alumnos")
