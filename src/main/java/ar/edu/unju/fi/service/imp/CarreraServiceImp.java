@@ -29,12 +29,13 @@ public class CarreraServiceImp implements CarreraService{
 		for(Materia m:c.getMaterias()) {
 			m.setCarrera(c);
 		}
+		System.out.println("Guardando carrera: " + c);
 		carreraRepository.save(c);
 	}
 
 	@Override
 	public List<Carrera> MostrarCarreras() {
-		// TODO Auto-generated method stub
+		System.out.println("Mostrando carreras: " + carreraRepository.findAll());
 		return carreraRepository.findCarreraByStatus(true);
 	}
 
@@ -46,6 +47,7 @@ public class CarreraServiceImp implements CarreraService{
 			Carrera carrera = listadoCarreras.get(i);
 			if (carrera.getCod().equals(codigo)) {
 				carrera.setStatus(false);
+				System.out.println("Eliminando carrera: " + carrera);
 				carreraRepository.save(carrera);
 				break;
 			}
@@ -61,6 +63,7 @@ public class CarreraServiceImp implements CarreraService{
 					for(Materia m:c.getMaterias()) {
 						m.setCarrera(c);
 					}
+					System.out.println("Modificando carrera: " + c);
 					carreraRepository.save(c);
 					break;
 				}
@@ -75,9 +78,11 @@ public class CarreraServiceImp implements CarreraService{
 		
 		for (Carrera c :listadoCarreras) {
 			if (c.getCod().equals(codigo)) {
+				System.out.println("Carrera encontrada: " + c);
 				return c;
 			}
 		}
+		System.out.println("Carrera no encontrada con código: " + codigo);
 		return null;
 	}
 	

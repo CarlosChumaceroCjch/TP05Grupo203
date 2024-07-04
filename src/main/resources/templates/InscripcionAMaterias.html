@@ -15,12 +15,12 @@
 		<form data-th-object="${nuevoAlumno}" data-th-action="@{/guardarInscripcion}"  method="post">
 			<div class="mb-3 col-sm-6">
     			<label for="lu" class="form-label">Ingrese a su Libreta Universitaria (LU)</label>
-    			<input type="number" class="form-control" id="lu" data-th-field="*{lu}">
+    			<input type="number" class="form-control" id="lu" data-th-field="*{lu}"required placeholder="L.U.">
   			</div>
   			<div data-th-object="${nuevaMateria}" class="mb-3 col-sm-6">
   				<label for="materia" class="form-label" >Materia que se desea inscribir</label>
   				<select id ="materia" data-th-field="*{codigo}" class="form-control" required> <!-- data-th:each="m : ${listadoMaterias}" -->
-					<option value="">Seleccionar Carrera</option>
+					<option value="">Seleccionar Materia</option>
 					<option data-th-each="m : ${listadoMaterias}" data-th-value="${m.codigo}" data-th-text="${m.nombre}"></option> <!-- data-th-value="${m.nombre}" data-th:text="${m.nombre}"-->
 				</select>
   			</div>

@@ -15,22 +15,22 @@
 		<form th:action="${flag}?@{/modificarMateria}:@{/guardarMateria}" th:object="${nuevaMateria}" method="post">
 		            <div class="form-group">
 		                <label for="codigo">Código:</label>
-		                <input required type="number" class="form-control" id="codigo" th:field="*{codigo}" data-th-readonly=${flag} >
+		                <input required type="number" class="form-control" id="codigo" th:field="*{codigo}" placeholder="Codigo de Materia" data-th-readonly=${flag} >
 		                <p class="form-text text-danger" data-th-if="${#fields.hasErrors('codigo')}" data-th-errors="*{codigo}"></p>
 		            </div>
 		            <div class="form-group">
 		                <label for="nombre">Nombre:</label>
-		                <input required type="text" class="form-control" id="nombre" th:field="*{nombre}" >
+		                <input required type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre materia">
 		                <p class="form-text text-danger" data-th-if="${#fields.hasErrors('nombre')}" data-th-errors="*{nombre}"></p>
 		            </div>
 		            <div class="form-group">
 		                <label for="curso">Curso:</label>
-		                <input required type="number" class="form-control" id="curso" th:field="*{curso}" >
+		                <input required type="number" class="form-control" id="curso" th:field="*{curso}"placeholder="Curso asignado" >
 		                <p class="form-text text-danger" data-th-if="${#fields.hasErrors('curso')}" data-th-errors="*{curso}"></p>
 		            </div>
 		            <div class="form-group">
-		                <label for="cantidadHoras">Cantidad de Horas:</label>
-		                <input required type="number" class="form-control" id="cantidadHoras" th:field="*{cantHoras}" >
+		                <label for="cantidadHoras">Carga Horaria:</label>
+		                <input required type="number" class="form-control" id="cantidadHoras" th:field="*{cantHoras}" placeholder="Horas semanales">
 		                <p class="form-text text-danger" data-th-if="${#fields.hasErrors('cantHoras')}" data-th-errors="*{cantHoras}"></p>
 		            </div>
 					<div class="col-md-4">

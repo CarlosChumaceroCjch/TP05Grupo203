@@ -25,6 +25,7 @@ import lombok.Data;
 public class Carrera{
 	
 	@Id
+	@NotNull
 	private String cod;
 	@Size(min=3, max=100, message="Este campo debe tener entre entre 3 y 100 caracteres.")
 	@Pattern(regexp = "[a-z A-Z]*", message = "Este campo solo debe contener Letras.")
@@ -32,6 +33,7 @@ public class Carrera{
 	@Min(value=3,message="Duracion de la carrera mayor a 3")
 	@Max(value=6,message="Debe ser menor a 6")
 	private Integer cantAnios;
+	@NotNull
 	private Boolean status;
 	@OneToMany(mappedBy="carrera",cascade = CascadeType.ALL)
 	private List<Alumno> alumnos;
